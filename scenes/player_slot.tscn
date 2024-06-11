@@ -1,5 +1,14 @@
 [gd_scene format=3 uid="uid://dsinwywj8abnh"]
 
 [node name="PlayerSlot" type="ColorRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 250.0
+offset_bottom = 500.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 192.0
+pivot_offset = Vector2(64, 64)
