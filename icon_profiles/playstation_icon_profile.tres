@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ControllerIconProfile" load_steps=11 format=3 uid="uid://b8hc0lufg7tjy"]
+
+[ext_resource type="Script" path="res://resources/input/controller_icon_profile.gd" id="1_fmcyu"]
+[ext_resource type="Texture2D" uid="uid://bwmoa5k2qv2ap" path="res://textures/input/playstation/action_circle.svg" id="1_u2twl"]
+[ext_resource type="Texture2D" uid="uid://ckmxlrdq012yq" path="res://textures/input/playstation/action_triangle.svg" id="2_thb7a"]
+[ext_resource type="Texture2D" uid="uid://dm5rg2dypy644" path="res://textures/input/playstation/action_cross.svg" id="3_hs06s"]
+[ext_resource type="Texture2D" uid="uid://bn6w8yjpkmjh" path="res://textures/input/playstation/action_square.svg" id="4_rfw76"]
+[ext_resource type="Texture2D" uid="uid://bw75ul844odny" path="res://textures/input/playstation/diagram.svg" id="5_w6en2"]
+[ext_resource type="Texture2D" uid="uid://ljfpu2wyx8mc" path="res://textures/input/playstation/shoulder_left.svg" id="7_i6qap"]
+[ext_resource type="Texture2D" uid="uid://3qicoampgitw" path="res://textures/input/playstation/shoulder_right.svg" id="8_61i4e"]
+[ext_resource type="Texture2D" uid="uid://e3natke35tte" path="res://textures/input/playstation/trigger_left.svg" id="9_3clux"]
+[ext_resource type="Texture2D" uid="uid://b6636v07cn3qw" path="res://textures/input/playstation/trigger_right.svg" id="10_s1vrl"]
+
+[resource]
+script = ExtResource("1_fmcyu")
+diagram = ExtResource("5_w6en2")
+action_south = ExtResource("3_hs06s")
+action_east = ExtResource("1_u2twl")
+action_west = ExtResource("4_rfw76")
+action_north = ExtResource("2_thb7a")
+shoulder_left = ExtResource("7_i6qap")
+trigger_left = ExtResource("9_3clux")
+shoulder_right = ExtResource("8_61i4e")
+trigger_right = ExtResource("10_s1vrl")

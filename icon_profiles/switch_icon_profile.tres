@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ControllerIconProfile" load_steps=11 format=3 uid="uid://jxffi2tn85fu"]
+
+[ext_resource type="Texture2D" uid="uid://bs0b3ms3yn578" path="res://textures/input/xbox/action_a.svg" id="1_0vaum"]
+[ext_resource type="Texture2D" uid="uid://bruwuyeloifjm" path="res://textures/input/switch/diagram_joycon.svg" id="1_ccxmn"]
+[ext_resource type="Script" path="res://resources/input/controller_icon_profile.gd" id="2_57mkn"]
+[ext_resource type="Texture2D" uid="uid://bfwsef58u8ua4" path="res://textures/input/xbox/action_x.svg" id="2_r3o0a"]
+[ext_resource type="Texture2D" uid="uid://ce0f4olp3844d" path="res://textures/input/xbox/action_b.svg" id="3_a8jnj"]
+[ext_resource type="Texture2D" uid="uid://dqwscit55vr4e" path="res://textures/input/xbox/action_y.svg" id="4_llbm5"]
+[ext_resource type="Texture2D" uid="uid://iaxpcuom677k" path="res://textures/input/switch/shoulder_left.svg" id="7_oh00o"]
+[ext_resource type="Texture2D" uid="uid://bbuj7m0g3dc4p" path="res://textures/input/switch/shoulder_right.svg" id="8_oswi0"]
+[ext_resource type="Texture2D" uid="uid://ccroe1aaqqu7b" path="res://textures/input/switch/trigger_left.svg" id="9_ldl3d"]
+[ext_resource type="Texture2D" uid="uid://dj0whqlj4j1n3" path="res://textures/input/switch/trigger_right.svg" id="10_grbhb"]
+
+[resource]
+script = ExtResource("2_57mkn")
+diagram = ExtResource("1_ccxmn")
+action_south = ExtResource("3_a8jnj")
+action_east = ExtResource("1_0vaum")
+action_west = ExtResource("4_llbm5")
+action_north = ExtResource("2_r3o0a")
+shoulder_left = ExtResource("7_oh00o")
+trigger_left = ExtResource("9_ldl3d")
+shoulder_right = ExtResource("8_oswi0")
+trigger_right = ExtResource("10_grbhb")

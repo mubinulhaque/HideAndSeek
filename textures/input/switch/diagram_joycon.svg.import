@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bruwuyeloifjm"
-path="res://.godot/imported/diagram.svg-174c6af7446ed2eb594180f8c17b3743.ctex"
+path="res://.godot/imported/diagram_joycon.svg-83071a2c9bd34adf809410dda4fd2288.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/input/switch/diagram.svg"
-dest_files=["res://.godot/imported/diagram.svg-174c6af7446ed2eb594180f8c17b3743.ctex"]
+source_file="res://textures/input/switch/diagram_joycon.svg"
+dest_files=["res://.godot/imported/diagram_joycon.svg-83071a2c9bd34adf809410dda4fd2288.ctex"]
 
 [params]
 
