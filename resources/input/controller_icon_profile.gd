@@ -1,3 +1,4 @@
+@icon("res://textures/input/generic/joystick.svg")
 class_name ControllerIconProfile
 extends Resource
 ## Establishes what icons should be used for each button

@@ -1,4 +1,13 @@
+class_name Game
 extends Node
+
+enum INPUT_TYPE {
+	PLAYSTATION,
+	XBOX,
+	SWITCH,
+	STEAMDECK,
+	KEYBOARD_AND_MOUSE,
+}
 
 @onready var current_scene: Node = $MainMenu
 

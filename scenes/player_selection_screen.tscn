@@ -1,9 +1,46 @@
-[gd_scene format=3 uid="uid://cdcytuhkfmfyh"]
+[gd_scene load_steps=3 format=3 uid="uid://cdcytuhkfmfyh"]
 
-[node name="PlayerSelectionScreen" type="Control"]
+[ext_resource type="PackedScene" uid="uid://dsinwywj8abnh" path="res://scenes/player_slot.tscn" id="1_3hq68"]
+[ext_resource type="Script" path="res://scripts/player_selection_screen.gd" id="1_88hfd"]
+
+[node name="PlayerSelectionScreen" type="Control" node_paths=PackedStringArray("player_slots")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_88hfd")
+player_slots = [NodePath("PlayerSlot1"), NodePath("PlayerSlot2"), NodePath("PlayerSlot3"), NodePath("PlayerSlot4")]
+
+[node name="PlayerSlot1" parent="." instance=ExtResource("1_3hq68")]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 110.0
+offset_right = 306.0
+offset_bottom = 610.0
+
+[node name="PlayerSlot2" parent="." instance=ExtResource("1_3hq68")]
+visible = false
+layout_mode = 0
+offset_left = 362.0
+offset_top = 110.0
+offset_right = 612.0
+offset_bottom = 610.0
+
+[node name="PlayerSlot3" parent="." instance=ExtResource("1_3hq68")]
+visible = false
+layout_mode = 0
+offset_left = 668.0
+offset_top = 110.0
+offset_right = 918.0
+offset_bottom = 610.0
+
+[node name="PlayerSlot4" parent="." instance=ExtResource("1_3hq68")]
+visible = false
+layout_mode = 0
+offset_left = 974.0
+offset_top = 110.0
+offset_right = 1224.0
+offset_bottom = 610.0

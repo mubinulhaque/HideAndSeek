@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ControllerIconProfile" load_steps=15 format=3 uid="uid://yhco58n54xc5"]
+[gd_resource type="Resource" script_class="ControllerIconProfile" load_steps=11 format=3 uid="uid://yhco58n54xc5"]
 
 [ext_resource type="Script" path="res://resources/input/controller_icon_profile.gd" id="1_4q7kh"]
 [ext_resource type="Texture2D" uid="uid://ce0f4olp3844d" path="res://textures/input/xbox/action_b.svg" id="1_ufmap"]
@@ -6,13 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dqwscit55vr4e" path="res://textures/input/xbox/action_y.svg" id="2_86vbl"]
 [ext_resource type="Texture2D" uid="uid://bfwsef58u8ua4" path="res://textures/input/xbox/action_x.svg" id="4_pf4t4"]
 [ext_resource type="Texture2D" uid="uid://p8uerb7m1ut4" path="res://textures/input/xbox/diagram.svg" id="5_eq2dy"]
-[ext_resource type="Texture2D" uid="uid://c227isf0l428t" path="res://textures/input/generic/dpad_down.svg" id="6_6t8ha"]
 [ext_resource type="Texture2D" uid="uid://cbc3ix2urpd0y" path="res://textures/input/xbox/shoulder_left.svg" id="6_n38yr"]
 [ext_resource type="Texture2D" uid="uid://bau55fp74fdiy" path="res://textures/input/xbox/shoulder_right.svg" id="7_2my0y"]
-[ext_resource type="Texture2D" uid="uid://dgyves8buvnme" path="res://textures/input/generic/dpad_left.svg" id="7_pwfk3"]
-[ext_resource type="Texture2D" uid="uid://cr7mj74sv5ofn" path="res://textures/input/generic/dpad_right.svg" id="8_5usbr"]
 [ext_resource type="Texture2D" uid="uid://cwcsrkevod77f" path="res://textures/input/xbox/trigger_left.svg" id="8_h28sv"]
-[ext_resource type="Texture2D" uid="uid://bdg4bgt3xboge" path="res://textures/input/generic/dpad_up.svg" id="9_tvmbp"]
 [ext_resource type="Texture2D" uid="uid://chiftplbts6pe" path="res://textures/input/xbox/trigger_right.svg" id="9_uljax"]
 
 [resource]
@@ -26,7 +22,3 @@ shoulder_left = ExtResource("6_n38yr")
 trigger_left = ExtResource("8_h28sv")
 shoulder_right = ExtResource("7_2my0y")
 trigger_right = ExtResource("9_uljax")
-dpad_left = ExtResource("7_pwfk3")
-dpad_right = ExtResource("8_5usbr")
-dpad_up = ExtResource("9_tvmbp")
-dpad_down = ExtResource("6_6t8ha")
