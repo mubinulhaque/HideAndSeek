@@ -1,26 +1,25 @@
 class_name PlayerSlot
 extends ColorRect
 
-@export var colour: Color
-
 var input_type: Game.INPUT_TYPE = Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 var controller_index := 0
 
 @onready var main_icon: TextureRect = $MainIcon
 @onready var input_selection: InputSelection = $StateMachine/InputSelection
+@onready var left_arrow: TextureRect = $LeftArrow
+@onready var right_arrow: TextureRect = $RightArrow
 
 
 func _input(event: InputEvent) -> void:
 	if (
 			input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 			and event.device == controller_index
-			and (event.is_action_pressed("menu_left")
-			or event.is_action_pressed("menu_right"))
 	):
-		print("Device ", controller_index, " has changed input type")
 		if event.is_action_pressed("menu_left"):
+			print("Device ", controller_index, " has changed input type")
 			input_selection.switch_controller_type(-1)
 		elif event.is_action_pressed("menu_right"):
+			print("Device ", controller_index, " has changed input type")
 			input_selection.switch_controller_type(1)
 
 ## Allows only the keyboard to be selected
@@ -74,3 +73,6 @@ func _on_main_icon_changed(new_texture: Texture2D) -> void:
 func _on_input_type_changed(new_icon: Texture2D, new_input_type: Game.INPUT_TYPE) -> void:
 	_on_main_icon_changed(new_icon)
 	input_type = new_input_type
+	
+	left_arrow.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
+	right_arrow.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
