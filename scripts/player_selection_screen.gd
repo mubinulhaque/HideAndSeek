@@ -47,7 +47,9 @@ func get_first_available_slot() -> int:
 func _on_player_left(keyboard_player: bool, controller_index: int) -> void:
 	if keyboard_player and active_keyboard:
 		# If the player to leave was using the keyboard and mouse
+		# Set the keyboard and mouse to be available
 		active_keyboard = false
 	else:
 		# If the player to leave was using a controller
+		# Set that controller to be available
 		active_controllers.remove_at(active_controllers.find(controller_index))

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://cuf725ginvxtp"]
+
+[ext_resource type="Texture2D" uid="uid://b68qc3ww560lo" path="res://textures/characters/the_boss/icon.png" id="1_016rl"]
+[ext_resource type="Script" path="res://resources/character.gd" id="1_ugw5e"]
+
+[resource]
+script = ExtResource("1_ugw5e")
+name = "The Boss"
+icon = ExtResource("1_016rl")

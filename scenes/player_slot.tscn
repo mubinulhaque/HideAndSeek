@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsinwywj8abnh"]
+[gd_scene load_steps=17 format=3 uid="uid://dsinwywj8abnh"]
 
 [ext_resource type="Script" path="res://scripts/player_slot.gd" id="1_6qmrs"]
 [ext_resource type="Texture2D" uid="uid://bedb2315x7e7o" path="res://textures/menu/arrowRight.png" id="1_saueq"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" path="res://scripts/state_machines/player_selection/input_selection.gd" id="9_601g0"]
 [ext_resource type="Texture2D" uid="uid://cqylprpec2ua0" path="res://textures/menu/cross.png" id="10_t42ql"]
 [ext_resource type="Texture2D" uid="uid://c5kf1vtn1nmwt" path="res://textures/menu/checkmark.png" id="11_5u78u"]
+[ext_resource type="Script" path="res://scripts/state_machines/player_selection/character_selection.gd" id="12_t2cco"]
+[ext_resource type="Resource" uid="uid://uomgng6bc864" path="res://characters/erika.tres" id="13_1gxre"]
+[ext_resource type="Resource" uid="uid://cuf725ginvxtp" path="res://characters/the_boss.tres" id="14_dtusx"]
 
 [node name="PlayerSlot" type="ColorRect"]
 offset_right = 250.0
@@ -79,6 +82,10 @@ playstation_icons = ExtResource("3_6dmnf")
 steamdeck_icons = ExtResource("5_q2r5t")
 switch_icons = ExtResource("4_8qb1p")
 
+[node name="CharacterSelection" type="Node" parent="StateMachine"]
+script = ExtResource("12_t2cco")
+characters = Array[Resource("res://resources/character.gd")]([ExtResource("13_1gxre"), ExtResource("14_dtusx")])
+
 [node name="CancelButton" type="Button" parent="."]
 layout_mode = 0
 offset_top = 450.0
@@ -113,6 +120,9 @@ offset_bottom = 41.0
 expand_mode = 2
 
 [connection signal="input_type_changed" from="StateMachine/InputSelection" to="." method="_on_input_type_changed"]
+[connection signal="main_icon_changed" from="StateMachine/InputSelection" to="." method="_on_main_icon_changed"]
 [connection signal="player_left" from="StateMachine/InputSelection" to="." method="_on_player_left"]
+[connection signal="character_changed" from="StateMachine/CharacterSelection" to="." method="_on_main_icon_changed"]
+[connection signal="input_selection_returned" from="StateMachine/CharacterSelection" to="StateMachine/InputSelection" method="switch_from_character_selection"]
 [connection signal="pressed" from="CancelButton" to="StateMachine" method="on_cancel_button_pressed"]
 [connection signal="pressed" from="AcceptButton" to="StateMachine" method="on_accept_button_pressed"]

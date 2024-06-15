@@ -23,10 +23,10 @@ func _input(event: InputEvent) -> void:
 			and event.device == controller_index
 	):
 		if event.is_action_pressed("menu_left"):
-			print("Joypad player ", controller_index, " has changed input type")
+			print("Joypad player ", controller_index, " has pressed left")
 			state_machine.press_arrow(-1)
 		elif event.is_action_pressed("menu_right"):
-			print("Joypad player ", controller_index, " has changed input type")
+			print("Joypad player ", controller_index, " has pressed right")
 			state_machine.press_arrow(1)
 		elif event.is_action_pressed("menu_accept"):
 			print("Joypad player ", controller_index, " has pressed accept")
@@ -80,6 +80,7 @@ func add_controller_player(device_index: int) -> void:
 
 
 func _on_main_icon_changed(new_texture: Texture2D) -> void:
+	# Change the main icon
 	main_icon.texture = new_texture
 
 
@@ -89,6 +90,9 @@ func _on_input_type_changed(
 		new_cancel_icon: Texture2D,
 		new_input_type: Game.INPUT_TYPE
 ) -> void:
+	# Changes the main icon, the textures of both the accept icon and
+	# the cancel icon, and the visibility of the arrows, cancel icon,
+	# accept icon
 	_on_main_icon_changed(new_diagram)
 	input_type = new_input_type
 	
@@ -103,6 +107,8 @@ func _on_input_type_changed(
 
 
 func _on_player_left() -> void:
+	# Set the slot invisible and tell the Player Selection Screen that this
+	# slot is now available
 	visible = false
 	player_left.emit(
 			input_type == Game.INPUT_TYPE.KEYBOARD_AND_MOUSE,

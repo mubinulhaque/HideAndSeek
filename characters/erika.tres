@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://uomgng6bc864"]
+
+[ext_resource type="Texture2D" uid="uid://31r12bfd54hr" path="res://textures/characters/erika/icon.png" id="1_dpr36"]
+[ext_resource type="Script" path="res://resources/character.gd" id="1_j42ka"]
+
+[resource]
+script = ExtResource("1_j42ka")
+name = "Erika"
+icon = ExtResource("1_dpr36")

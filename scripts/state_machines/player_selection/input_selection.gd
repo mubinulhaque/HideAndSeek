@@ -1,6 +1,7 @@
 class_name InputSelection
 extends PlayerSlotState
 
+signal main_icon_changed(new_icon: Texture2D)
 signal input_type_changed(
 		new_diagram: Texture2D,
 		new_accept_icon: Texture2D,
@@ -31,6 +32,7 @@ signal player_left
 
 
 func set_to_controller(input_type: Game.INPUT_TYPE) -> void:
+	# Change the main icon to the correct controller icon
 	match input_type:
 		Game.INPUT_TYPE.XBOX:
 			input_type_changed.emit(
@@ -67,6 +69,7 @@ func set_to_controller(input_type: Game.INPUT_TYPE) -> void:
 
 
 func set_to_keyboard() -> void:
+	# Change the main icon to a keyboard
 	input_type_changed.emit(
 			keyboard_diagram,
 			null,
@@ -75,7 +78,13 @@ func set_to_keyboard() -> void:
 	)
 
 
+func switch_from_character_selection() -> void:
+	# Change the main icon to the current controller type's icon
+	main_icon_changed.emit(controller_icons[current_controller_type].diagram)
+
+
 func _on_arrow_pressed(action: int) -> void:
+	# Scroll between controller types
 	var new_controller_type := (
 			(current_controller_type + action) % controller_icons.size()
 	)
@@ -95,4 +104,5 @@ func _on_cancel_button_pressed() -> void:
 
 
 func _on_accept_button_pressed() -> void:
-	print("Accept!")
+	# Move to the CharacterSelection state
+	transitioned.emit(self, "CharacterSelection")
