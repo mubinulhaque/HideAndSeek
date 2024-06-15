@@ -2,6 +2,7 @@ extends PlayerSlotState
 
 signal character_changed(new_icon: Texture2D)
 signal input_selection_returned
+signal arrows_visible
 
 @export var characters: Array[Character]
 
@@ -10,6 +11,8 @@ var current_character := 0
 
 func _enter() -> void:
 	# Change the main icon to the first character's icon
+	# and make the arrows visible
+	arrows_visible.emit()
 	if characters.size() > 0:
 		character_changed.emit(characters[0].icon)
 

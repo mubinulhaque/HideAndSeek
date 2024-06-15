@@ -8,14 +8,15 @@ var controller_index := 0
 
 @onready var main_icon: TextureRect = $MainIcon
 @onready var input_selection: InputSelection = $StateMachine/InputSelection
-@onready var left_arrow: TextureRect = $LeftArrow
-@onready var right_arrow: TextureRect = $RightArrow
+@onready var left_arrow: Button = $LeftArrow
+@onready var right_arrow: Button = $RightArrow
 @onready var left_arrow_icon: TextureRect = $LeftArrow/LeftArrowIcon
 @onready var right_arrow_icon: TextureRect = $RightArrow/RightArrowIcon
 @onready var cancel_icon: TextureRect = $CancelButton/CancelIcon
 @onready var accept_icon: TextureRect = $AcceptButton/AcceptIcon
 @onready var state_machine: PlayerSlotStateMachine = $StateMachine
-
+@onready var cancel_button: Button = $CancelButton
+@onready var accept_button: Button = $AcceptButton
 
 func _input(event: InputEvent) -> void:
 	if (
@@ -98,6 +99,8 @@ func _on_input_type_changed(
 	
 	left_arrow.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 	right_arrow.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
+	left_arrow_icon.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
+	right_arrow_icon.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 	cancel_icon.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 	accept_icon.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 	
@@ -114,3 +117,15 @@ func _on_player_left() -> void:
 			input_type == Game.INPUT_TYPE.KEYBOARD_AND_MOUSE,
 			controller_index,
 	)
+
+
+func change_arrow_visibility(enable: bool) -> void:
+	left_arrow.visible = enable
+	right_arrow.visible = enable
+
+
+func _on_button_up() -> void:
+	cancel_button.release_focus()
+	accept_button.release_focus()
+	left_arrow.release_focus()
+	right_arrow.release_focus()

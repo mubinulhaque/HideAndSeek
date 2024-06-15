@@ -23,15 +23,16 @@ offset_bottom = 500.0
 color = Color(0, 0, 0, 0.25098)
 script = ExtResource("1_6qmrs")
 
-[node name="LeftArrow" type="TextureRect" parent="."]
+[node name="LeftArrow" type="Button" parent="."]
 layout_mode = 0
 offset_top = 100.0
 offset_right = 50.0
 offset_bottom = 150.0
+scale = Vector2(-1, 1)
 pivot_offset = Vector2(25, 25)
-texture = ExtResource("1_saueq")
-expand_mode = 2
-flip_h = true
+icon = ExtResource("1_saueq")
+vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="LeftArrowIcon" type="TextureRect" parent="LeftArrow"]
 layout_mode = 0
@@ -51,15 +52,15 @@ offset_bottom = 192.0
 pivot_offset = Vector2(64, 64)
 texture = ExtResource("7_pudyo")
 
-[node name="RightArrow" type="TextureRect" parent="."]
+[node name="RightArrow" type="Button" parent="."]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 100.0
 offset_right = 250.0
 offset_bottom = 150.0
 pivot_offset = Vector2(25, 25)
-texture = ExtResource("1_saueq")
-expand_mode = 2
+icon = ExtResource("1_saueq")
+expand_icon = true
 
 [node name="RightArrowIcon" type="TextureRect" parent="RightArrow"]
 layout_mode = 0
@@ -119,10 +120,17 @@ offset_right = -5.0
 offset_bottom = 41.0
 expand_mode = 2
 
+[connection signal="button_up" from="LeftArrow" to="." method="_on_button_up"]
+[connection signal="pressed" from="LeftArrow" to="StateMachine" method="press_arrow" binds= [-1]]
+[connection signal="button_up" from="RightArrow" to="." method="_on_button_up"]
+[connection signal="pressed" from="RightArrow" to="StateMachine" method="press_arrow" binds= [1]]
 [connection signal="input_type_changed" from="StateMachine/InputSelection" to="." method="_on_input_type_changed"]
 [connection signal="main_icon_changed" from="StateMachine/InputSelection" to="." method="_on_main_icon_changed"]
 [connection signal="player_left" from="StateMachine/InputSelection" to="." method="_on_player_left"]
+[connection signal="arrows_visible" from="StateMachine/CharacterSelection" to="." method="change_arrow_visibility" binds= [true]]
 [connection signal="character_changed" from="StateMachine/CharacterSelection" to="." method="_on_main_icon_changed"]
 [connection signal="input_selection_returned" from="StateMachine/CharacterSelection" to="StateMachine/InputSelection" method="switch_from_character_selection"]
+[connection signal="button_up" from="CancelButton" to="." method="_on_button_up"]
 [connection signal="pressed" from="CancelButton" to="StateMachine" method="on_cancel_button_pressed"]
+[connection signal="button_up" from="AcceptButton" to="." method="_on_button_up"]
 [connection signal="pressed" from="AcceptButton" to="StateMachine" method="on_accept_button_pressed"]
