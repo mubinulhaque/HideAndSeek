@@ -20,6 +20,10 @@ func _physics_update(_delta: float) -> void:
 	pass
 
 
+func _on_arrow_pressed(_action: int) -> void:
+	pass
+
+
 func _on_cancel_button_pressed() -> void:
 	pass
 

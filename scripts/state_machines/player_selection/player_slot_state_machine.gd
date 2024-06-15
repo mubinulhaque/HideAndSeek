@@ -1,3 +1,4 @@
+class_name PlayerSlotStateMachine
 extends Node
 
 @export var initial_state: PlayerSlotState
@@ -40,3 +41,18 @@ func _on_child_transition(state: PlayerSlotState, new_state_name: String) -> voi
 	
 	new_state._enter()
 	current_state = new_state
+
+
+func press_arrow(action: int) -> void:
+	if current_state:
+		current_state._on_arrow_pressed(action)
+
+
+func on_cancel_button_pressed() -> void:
+	if current_state:
+		current_state._on_cancel_button_pressed()
+
+
+func on_accept_button_pressed() -> void:
+	if current_state:
+		current_state._on_accept_button_pressed()

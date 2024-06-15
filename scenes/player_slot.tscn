@@ -31,6 +31,7 @@ expand_mode = 2
 flip_h = true
 
 [node name="LeftArrowIcon" type="TextureRect" parent="LeftArrow"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 60.0
 offset_right = 40.0
@@ -58,6 +59,7 @@ texture = ExtResource("1_saueq")
 expand_mode = 2
 
 [node name="RightArrowIcon" type="TextureRect" parent="RightArrow"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 60.0
 offset_right = 40.0
@@ -65,8 +67,9 @@ offset_bottom = 92.0
 texture = ExtResource("5_haptm")
 expand_mode = 2
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_m346i")
+initial_state = NodePath("InputSelection")
 
 [node name="InputSelection" type="Node" parent="StateMachine"]
 script = ExtResource("9_601g0")
@@ -110,3 +113,5 @@ offset_bottom = 41.0
 expand_mode = 2
 
 [connection signal="input_type_changed" from="StateMachine/InputSelection" to="." method="_on_input_type_changed"]
+[connection signal="pressed" from="CancelButton" to="StateMachine" method="on_cancel_button_pressed"]
+[connection signal="pressed" from="AcceptButton" to="StateMachine" method="on_accept_button_pressed"]

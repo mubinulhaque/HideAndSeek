@@ -74,17 +74,10 @@ func set_to_keyboard() -> void:
 	)
 
 
-func switch_controller_type(action: int) -> void:
-	var new_controller_type := current_controller_type
-	
-	if action > 0:
-		new_controller_type = (
-				(current_controller_type + 1) % controller_icons.size()
-		)
-	elif action < 0:
-		new_controller_type = (
-				(current_controller_type - 1) % controller_icons.size()
-		)
+func _on_arrow_pressed(action: int) -> void:
+	var new_controller_type := (
+			(current_controller_type + action) % controller_icons.size()
+	)
 	
 	current_controller_type = new_controller_type
 	input_type_changed.emit(
@@ -93,3 +86,11 @@ func switch_controller_type(action: int) -> void:
 			controller_icons[current_controller_type].action_east,
 			controller_types[current_controller_type],
 	)
+
+
+func _on_cancel_button_pressed() -> void:
+	print("Cancel!")
+
+
+func _on_accept_button_pressed() -> void:
+	print("Accept!")

@@ -12,6 +12,7 @@ var controller_index := 0
 @onready var right_arrow_icon: TextureRect = $RightArrow/RightArrowIcon
 @onready var cancel_icon: TextureRect = $CancelButton/CancelIcon
 @onready var accept_icon: TextureRect = $AcceptButton/AcceptIcon
+@onready var state_machine: PlayerSlotStateMachine = $StateMachine
 
 
 func _input(event: InputEvent) -> void:
@@ -20,11 +21,17 @@ func _input(event: InputEvent) -> void:
 			and event.device == controller_index
 	):
 		if event.is_action_pressed("menu_left"):
-			print("Device ", controller_index, " has changed input type")
-			input_selection.switch_controller_type(-1)
+			print("Joypad player ", controller_index, " has changed input type")
+			state_machine.press_arrow(-1)
 		elif event.is_action_pressed("menu_right"):
-			print("Device ", controller_index, " has changed input type")
-			input_selection.switch_controller_type(1)
+			print("Joypad player ", controller_index, " has changed input type")
+			state_machine.press_arrow(1)
+		elif event.is_action_pressed("menu_accept"):
+			print("Joypad player ", controller_index, " has pressed accept")
+			state_machine.on_accept_button_pressed()
+		elif event.is_action_pressed("menu_cancel"):
+			print("Joypad player ", controller_index, " has pressed cancel")
+			state_machine.on_cancel_button_pressed()
 
 ## Allows only the keyboard to be selected
 func add_keyboard_player() -> void:
