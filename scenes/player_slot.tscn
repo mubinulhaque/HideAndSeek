@@ -113,5 +113,6 @@ offset_bottom = 41.0
 expand_mode = 2
 
 [connection signal="input_type_changed" from="StateMachine/InputSelection" to="." method="_on_input_type_changed"]
+[connection signal="player_left" from="StateMachine/InputSelection" to="." method="_on_player_left"]
 [connection signal="pressed" from="CancelButton" to="StateMachine" method="on_cancel_button_pressed"]
 [connection signal="pressed" from="AcceptButton" to="StateMachine" method="on_accept_button_pressed"]

@@ -1,6 +1,8 @@
 class_name PlayerSlot
 extends ColorRect
 
+signal player_left(keyboard_player: bool, controller_index: int)
+
 var input_type: Game.INPUT_TYPE = Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 var controller_index := 0
 
@@ -98,3 +100,11 @@ func _on_input_type_changed(
 	if new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
 		accept_icon.texture = new_accept_icon
 		cancel_icon.texture = new_cancel_icon
+
+
+func _on_player_left() -> void:
+	visible = false
+	player_left.emit(
+			input_type == Game.INPUT_TYPE.KEYBOARD_AND_MOUSE,
+			controller_index,
+	)

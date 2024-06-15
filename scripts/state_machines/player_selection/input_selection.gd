@@ -7,6 +7,7 @@ signal input_type_changed(
 		new_cancel_icon: Texture2D,
 		new_input_type: Game.INPUT_TYPE,
 )
+signal player_left
 
 @export var keyboard_diagram: Texture2D
 @export var xbox_icons: ControllerIconProfile
@@ -89,7 +90,8 @@ func _on_arrow_pressed(action: int) -> void:
 
 
 func _on_cancel_button_pressed() -> void:
-	print("Cancel!")
+	# Remove the player
+	player_left.emit()
 
 
 func _on_accept_button_pressed() -> void:
