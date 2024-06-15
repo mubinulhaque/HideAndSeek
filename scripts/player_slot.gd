@@ -8,6 +8,10 @@ var controller_index := 0
 @onready var input_selection: InputSelection = $StateMachine/InputSelection
 @onready var left_arrow: TextureRect = $LeftArrow
 @onready var right_arrow: TextureRect = $RightArrow
+@onready var left_arrow_icon: TextureRect = $LeftArrow/LeftArrowIcon
+@onready var right_arrow_icon: TextureRect = $RightArrow/RightArrowIcon
+@onready var cancel_icon: TextureRect = $CancelButton/CancelIcon
+@onready var accept_icon: TextureRect = $AcceptButton/AcceptIcon
 
 
 func _input(event: InputEvent) -> void:
@@ -70,9 +74,20 @@ func _on_main_icon_changed(new_texture: Texture2D) -> void:
 	main_icon.texture = new_texture
 
 
-func _on_input_type_changed(new_icon: Texture2D, new_input_type: Game.INPUT_TYPE) -> void:
-	_on_main_icon_changed(new_icon)
+func _on_input_type_changed(
+		new_diagram: Texture2D, 
+		new_accept_icon: Texture2D,
+		new_cancel_icon: Texture2D,
+		new_input_type: Game.INPUT_TYPE
+) -> void:
+	_on_main_icon_changed(new_diagram)
 	input_type = new_input_type
 	
 	left_arrow.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 	right_arrow.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
+	cancel_icon.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
+	accept_icon.visible = new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
+	
+	if new_input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
+		accept_icon.texture = new_accept_icon
+		cancel_icon.texture = new_cancel_icon

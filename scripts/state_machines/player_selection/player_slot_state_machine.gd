@@ -1,14 +1,14 @@
 extends Node
 
-@export var initial_state: State
+@export var initial_state: PlayerSlotState
 
 var _states: Dictionary = {}
-var current_state: State
+var current_state: PlayerSlotState
 
 
 func _ready() -> void:
 	for child in get_children():
-		if child is State:
+		if child is PlayerSlotState:
 			_states[child.name.to_lower()] = child
 			child.transitioned.connect(_on_child_transition)
 	
@@ -27,11 +27,11 @@ func _physics_process(delta: float) -> void:
 		current_state._physics_update(delta)
 
 
-func _on_child_transition(old_state: State, new_state_name: String) -> void:
-	if old_state != current_state:
+func _on_child_transition(state: PlayerSlotState, new_state_name: String) -> void:
+	if state != current_state:
 		return
 	
-	var new_state: State = _states.get(new_state_name.to_lower())
+	var new_state: PlayerSlotState = _states.get(new_state_name.to_lower())
 	if not new_state:
 		return
 	

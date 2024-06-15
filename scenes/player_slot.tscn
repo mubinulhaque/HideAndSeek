@@ -1,14 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsinwywj8abnh"]
+[gd_scene load_steps=14 format=3 uid="uid://dsinwywj8abnh"]
 
 [ext_resource type="Script" path="res://scripts/player_slot.gd" id="1_6qmrs"]
 [ext_resource type="Texture2D" uid="uid://bedb2315x7e7o" path="res://textures/menu/arrowRight.png" id="1_saueq"]
 [ext_resource type="Resource" uid="uid://yhco58n54xc5" path="res://icon_profiles/xbox_icon_profile.tres" id="2_wk1jq"]
 [ext_resource type="Resource" uid="uid://b8hc0lufg7tjy" path="res://icon_profiles/playstation_icon_profile.tres" id="3_6dmnf"]
+[ext_resource type="Texture2D" uid="uid://dgyves8buvnme" path="res://textures/input/generic/dpad_left.svg" id="3_mcs3v"]
 [ext_resource type="Resource" uid="uid://jxffi2tn85fu" path="res://icon_profiles/switch_icon_profile.tres" id="4_8qb1p"]
+[ext_resource type="Script" path="res://scripts/state_machines/player_selection/player_slot_state_machine.gd" id="4_m346i"]
+[ext_resource type="Texture2D" uid="uid://cr7mj74sv5ofn" path="res://textures/input/generic/dpad_right.svg" id="5_haptm"]
 [ext_resource type="Resource" uid="uid://dhpv4jeaktc5h" path="res://icon_profiles/steamdeck_icon_profile.tres" id="5_q2r5t"]
 [ext_resource type="Texture2D" uid="uid://cuoxh54jeitr6" path="res://textures/input/keyboard.svg" id="7_pudyo"]
-[ext_resource type="Script" path="res://scripts/state_machines/state_machine.gd" id="8_puwhu"]
 [ext_resource type="Script" path="res://scripts/state_machines/player_selection/input_selection.gd" id="9_601g0"]
+[ext_resource type="Texture2D" uid="uid://cqylprpec2ua0" path="res://textures/menu/cross.png" id="10_t42ql"]
+[ext_resource type="Texture2D" uid="uid://c5kf1vtn1nmwt" path="res://textures/menu/checkmark.png" id="11_5u78u"]
 
 [node name="PlayerSlot" type="ColorRect"]
 offset_right = 250.0
@@ -25,6 +29,14 @@ pivot_offset = Vector2(25, 25)
 texture = ExtResource("1_saueq")
 expand_mode = 2
 flip_h = true
+
+[node name="LeftArrowIcon" type="TextureRect" parent="LeftArrow"]
+offset_left = 8.0
+offset_top = 60.0
+offset_right = 40.0
+offset_bottom = 92.0
+texture = ExtResource("3_mcs3v")
+expand_mode = 2
 
 [node name="MainIcon" type="TextureRect" parent="."]
 layout_mode = 0
@@ -45,9 +57,16 @@ pivot_offset = Vector2(25, 25)
 texture = ExtResource("1_saueq")
 expand_mode = 2
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("8_puwhu")
-initial_state = NodePath("InputSelection")
+[node name="RightArrowIcon" type="TextureRect" parent="RightArrow"]
+offset_left = 8.0
+offset_top = 60.0
+offset_right = 40.0
+offset_bottom = 92.0
+texture = ExtResource("5_haptm")
+expand_mode = 2
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_m346i")
 
 [node name="InputSelection" type="Node" parent="StateMachine"]
 script = ExtResource("9_601g0")
@@ -56,5 +75,38 @@ xbox_icons = ExtResource("2_wk1jq")
 playstation_icons = ExtResource("3_6dmnf")
 steamdeck_icons = ExtResource("5_q2r5t")
 switch_icons = ExtResource("4_8qb1p")
+
+[node name="CancelButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 450.0
+offset_right = 50.0
+offset_bottom = 500.0
+icon = ExtResource("10_t42ql")
+expand_icon = true
+
+[node name="CancelIcon" type="TextureRect" parent="CancelButton"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 9.0
+offset_right = 87.0
+offset_bottom = 41.0
+expand_mode = 2
+
+[node name="AcceptButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 450.0
+offset_right = 250.0
+offset_bottom = 500.0
+icon = ExtResource("11_5u78u")
+expand_icon = true
+
+[node name="AcceptIcon" type="TextureRect" parent="AcceptButton"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 9.0
+offset_right = -5.0
+offset_bottom = 41.0
+expand_mode = 2
 
 [connection signal="input_type_changed" from="StateMachine/InputSelection" to="." method="_on_input_type_changed"]
