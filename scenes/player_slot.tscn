@@ -57,4 +57,4 @@ playstation_icons = ExtResource("3_6dmnf")
 steamdeck_icons = ExtResource("5_q2r5t")
 switch_icons = ExtResource("4_8qb1p")
 
-[connection signal="main_icon_changed" from="StateMachine/InputSelection" to="." method="_on_main_icon_changed"]
+[connection signal="input_type_changed" from="StateMachine/InputSelection" to="." method="_on_input_type_changed"]
