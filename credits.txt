@@ -3,3 +3,6 @@ https://godotengine.org/license/
 
 Input Prompts:
 https://www.kenney.nl/
+
+Models:
+https://www.mixamo.com
