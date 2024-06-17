@@ -76,11 +76,23 @@ func set_to_keyboard() -> void:
 			null,
 			Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 	)
+	
+	current_controller_type = -1
 
 
 func switch_from_character_selection() -> void:
 	# Change the main icon to the current controller type's icon
-	main_icon_changed.emit(controller_icons[current_controller_type].diagram)
+	if current_controller_type > 0:
+		# If the current player is using a controller
+		main_icon_changed.emit(controller_icons[current_controller_type].diagram)
+	else:
+		# If the current player is using the keyboard and mouse
+		input_type_changed.emit(
+				keyboard_diagram,
+				null,
+				null,
+				Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
+		)
 
 
 func _on_arrow_pressed(action: int) -> void:
