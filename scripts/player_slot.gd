@@ -2,9 +2,15 @@ class_name PlayerSlot
 extends ColorRect
 
 signal player_left(keyboard_player: bool, controller_index: int)
+signal player_ready(
+		character: Character,
+		input_type: Game.INPUT_TYPE,
+		controller_index: int,
+)
 
 var input_type: Game.INPUT_TYPE = Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 var controller_index := 0
+var is_player_ready = 0
 
 @onready var main_icon: TextureRect = $MainIcon
 @onready var input_selection: InputSelection = $StateMachine/InputSelection
@@ -17,6 +23,8 @@ var controller_index := 0
 @onready var state_machine: PlayerSlotStateMachine = $StateMachine
 @onready var cancel_button: Button = $CancelButton
 @onready var accept_button: Button = $AcceptButton
+@onready var ready_label: Label = $ReadyLabel
+
 
 func _input(event: InputEvent) -> void:
 	if (
@@ -35,6 +43,7 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("menu_cancel"):
 			print("Joypad player ", controller_index, " has pressed cancel")
 			state_machine.on_cancel_button_pressed()
+
 
 ## Allows only the keyboard to be selected
 func add_keyboard_player() -> void:
@@ -129,3 +138,12 @@ func _on_button_up() -> void:
 	accept_button.release_focus()
 	left_arrow.release_focus()
 	right_arrow.release_focus()
+
+
+func make_ready(character: Character) -> void:
+	is_player_ready = true
+	ready_label.visible = true
+	cancel_button.visible = false
+	accept_button.visible = false
+	
+	player_ready.emit(character, input_type, controller_index)

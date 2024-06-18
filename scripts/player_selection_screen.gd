@@ -1,5 +1,12 @@
 extends Control
 
+signal switch_scene(new_scene_key: String)
+signal player_ready(
+		character: Character,
+		input_type: Game.INPUT_TYPE,
+		controller_index: int,
+)
+
 @export var player_slots: Array[PlayerSlot]
 
 var active_controllers: Array[int]
@@ -53,3 +60,12 @@ func _on_player_left(keyboard_player: bool, controller_index: int) -> void:
 		# If the player to leave was using a controller
 		# Set that controller to be available
 		active_controllers.remove_at(active_controllers.find(controller_index))
+
+
+## Sends the signal up to Game
+func _on_player_ready(
+		character: Character,
+		input_type: Game.INPUT_TYPE,
+		controller_index: int,
+):
+	player_ready.emit(character, input_type, controller_index)

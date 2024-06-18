@@ -46,6 +46,7 @@ offset_right = 1224.0
 offset_bottom = 610.0
 
 [connection signal="player_left" from="PlayerSlot1" to="." method="_on_player_left"]
+[connection signal="player_ready" from="PlayerSlot1" to="." method="_on_player_ready"]
 [connection signal="player_left" from="PlayerSlot2" to="." method="_on_player_left"]
 [connection signal="player_left" from="PlayerSlot3" to="." method="_on_player_left"]
 [connection signal="player_left" from="PlayerSlot4" to="." method="_on_player_left"]

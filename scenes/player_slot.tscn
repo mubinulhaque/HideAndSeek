@@ -120,6 +120,19 @@ offset_right = -5.0
 offset_bottom = 41.0
 expand_mode = 2
 
+[node name="ReadyLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 70.0
+offset_top = 400.0
+offset_right = 180.0
+offset_bottom = 445.0
+pivot_offset = Vector2(55, 22)
+theme_override_font_sizes/font_size = 32
+text = "READY!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="button_up" from="LeftArrow" to="." method="_on_button_up"]
 [connection signal="pressed" from="LeftArrow" to="StateMachine" method="press_arrow" binds= [-1]]
 [connection signal="button_up" from="RightArrow" to="." method="_on_button_up"]
@@ -130,6 +143,7 @@ expand_mode = 2
 [connection signal="arrows_visible" from="StateMachine/CharacterSelection" to="." method="change_arrow_visibility" binds= [true]]
 [connection signal="character_changed" from="StateMachine/CharacterSelection" to="." method="_on_main_icon_changed"]
 [connection signal="input_selection_returned" from="StateMachine/CharacterSelection" to="StateMachine/InputSelection" method="switch_from_character_selection"]
+[connection signal="player_ready" from="StateMachine/CharacterSelection" to="." method="make_ready"]
 [connection signal="button_up" from="CancelButton" to="." method="_on_button_up"]
 [connection signal="pressed" from="CancelButton" to="StateMachine" method="on_cancel_button_pressed"]
 [connection signal="button_up" from="AcceptButton" to="." method="_on_button_up"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdppave1d05ht"]
+
+[ext_resource type="PackedScene" uid="uid://he62r8l5vtxj" path="res://models/the_boss/the_boss.fbx" id="1_ebvvx"]
+
+[node name="Root Scene" instance=ExtResource("1_ebvvx")]

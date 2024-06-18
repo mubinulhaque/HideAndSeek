@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgdj822xmbqit"]
+
+[ext_resource type="PackedScene" uid="uid://x2vv3gae3agc" path="res://models/erika/erika.fbx" id="1_q4q3t"]
+
+[node name="Root Scene" instance=ExtResource("1_q4q3t")]

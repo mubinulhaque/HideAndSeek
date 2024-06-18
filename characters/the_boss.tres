@@ -7,3 +7,4 @@
 script = ExtResource("1_ugw5e")
 name = "The Boss"
 icon = ExtResource("1_016rl")
+model = "res://models/the_boss/the_boss.tscn"

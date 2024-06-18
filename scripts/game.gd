@@ -51,7 +51,31 @@ func switch_scene(new_scene_key: String) -> void:
 			current_scene.switch_scene.connect(switch_scene)
 		else:
 			# If the new scene has no correct signal for scene switching
-			print("Scene does not have the correct signal!")
+			print("Scene does not have the signal for scene switching!")
+		
+		if current_scene.has_signal("player_ready"):
+			# If the new scene has the correct signal for making players
+			# Hook up the correct signal to allow making players
+			print("Scene has the correct signal!")
+			current_scene.player_ready.connect(make_player)
+		else:
+			# If the new scene has no correct signal for scene switching
+			print("Scene does not have the signal for making players!")
 	else:
 		# If the new scene cannot be loaded
 		print("Unable to find a scene with the key ", new_scene_key)
+
+
+func make_player(
+		character: Character, 
+		input_type: INPUT_TYPE,
+		controller_index: int,
+):
+	print("Made new player with the character ", 
+			character.name,
+			" using ",
+			str(input_type),
+			" with the controller index of ",
+			str(controller_index),
+			"!",
+	)

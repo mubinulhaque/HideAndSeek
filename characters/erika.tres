@@ -7,3 +7,4 @@
 script = ExtResource("1_j42ka")
 name = "Erika"
 icon = ExtResource("1_dpr36")
+model = "res://models/erika/erika.tscn"
