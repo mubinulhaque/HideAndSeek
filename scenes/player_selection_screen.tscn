@@ -45,8 +45,21 @@ offset_top = 110.0
 offset_right = 1224.0
 offset_bottom = 610.0
 
+[node name="SwitchSceneButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 652.0
+offset_right = 831.0
+offset_bottom = 705.0
+theme_override_font_sizes/font_size = 32
+text = "GO TO EXAMPLE WORLD"
+
 [connection signal="player_left" from="PlayerSlot1" to="." method="_on_player_left"]
 [connection signal="player_ready" from="PlayerSlot1" to="." method="_on_player_ready"]
 [connection signal="player_left" from="PlayerSlot2" to="." method="_on_player_left"]
+[connection signal="player_ready" from="PlayerSlot2" to="." method="_on_player_ready"]
 [connection signal="player_left" from="PlayerSlot3" to="." method="_on_player_left"]
+[connection signal="player_ready" from="PlayerSlot3" to="." method="_on_player_ready"]
 [connection signal="player_left" from="PlayerSlot4" to="." method="_on_player_left"]
+[connection signal="player_ready" from="PlayerSlot4" to="." method="_on_player_ready"]
+[connection signal="pressed" from="SwitchSceneButton" to="." method="_on_all_players_ready"]

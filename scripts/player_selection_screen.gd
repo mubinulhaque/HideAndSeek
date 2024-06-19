@@ -69,3 +69,7 @@ func _on_player_ready(
 		controller_index: int,
 ):
 	player_ready.emit(character, input_type, controller_index)
+
+
+func _on_all_players_ready() -> void:
+	switch_scene.emit("example_world")
