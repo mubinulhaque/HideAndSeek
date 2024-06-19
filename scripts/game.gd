@@ -103,15 +103,20 @@ func add_characters(positions: Array[Vector2], world: Node) -> void:
 		var model: PackedScene = load(players[i].character.model)
 		
 		if model:
+			# Place the model in the wold
 			print("Loading model for player ", i)
 			var new_char: Node = model.instantiate()
 			world.add_child(new_char)
 			new_char.position = Vector3(positions[i].x, 0.1, positions[i].y)
 			
+			# Name the model
 			if players[i].input_type == INPUT_TYPE.KEYBOARD_AND_MOUSE:
 				new_char.name = players[i].character.name + "_Keyboard"
 			else:
 				new_char.name = (players[i].character.name 
 						+ "_Controller" + str(players[i].controller_index))
+			
+			# Set the player's model to this model
+			players[i].model = new_char
 		else:
 			print("Cannot load model at: ", players[i].character.model)
