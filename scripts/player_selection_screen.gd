@@ -67,7 +67,7 @@ func _on_player_ready(
 		character: Character,
 		input_type: Game.INPUT_TYPE,
 		controller_index: int,
-):
+) -> void:
 	player_ready.emit(character, input_type, controller_index)
 
 
