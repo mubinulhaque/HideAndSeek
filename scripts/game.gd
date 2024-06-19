@@ -47,7 +47,7 @@ func switch_scene(new_scene_key: String) -> void:
 		if current_scene.has_signal("switch_scene"):
 			# If the new scene has the correct signal for scene switching
 			# Hook up the correct signal to allow scene switching
-			print("Scene has the correct signal!")
+			print("Scene has the correct signal for scene switching!")
 			current_scene.switch_scene.connect(switch_scene)
 		else:
 			# If the new scene has no correct signal for scene switching
@@ -56,7 +56,7 @@ func switch_scene(new_scene_key: String) -> void:
 		if current_scene.has_signal("player_ready"):
 			# If the new scene has the correct signal for making players
 			# Hook up the correct signal to allow making players
-			print("Scene has the correct signal!")
+			print("Scene has the correct signal for making players!")
 			current_scene.player_ready.connect(make_player)
 		else:
 			# If the new scene has no correct signal for scene switching
@@ -79,3 +79,5 @@ func make_player(
 			str(controller_index),
 			"!",
 	)
+	var player = Player.new(character, input_type, controller_index)
+	add_child(player)
