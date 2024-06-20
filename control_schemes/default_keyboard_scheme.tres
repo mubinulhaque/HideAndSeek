@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="MouseControlScheme" load_steps=7 format=3 uid="uid://bbxg8ki3lcbbx"]
+
+[ext_resource type="Script" path="res://resources/input/mouse_control_scheme.gd" id="1_cikkd"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_qhq48"]
+device = -1
+pressed = true
+keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_a428j"]
+device = -1
+pressed = true
+keycode = 70
+unicode = 102
+
+[sub_resource type="InputEventKey" id="InputEventKey_q4srk"]
+device = -1
+pressed = true
+keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_spj0a"]
+device = -1
+pressed = true
+keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_b4018"]
+device = -1
+pressed = true
+keycode = 68
+unicode = 100
+
+[resource]
+script = ExtResource("1_cikkd")
+invert_x = false
+invert_y = false
+left = SubResource("InputEventKey_spj0a")
+right = SubResource("InputEventKey_b4018")
+forwards = SubResource("InputEventKey_q4srk")
+backwards = SubResource("InputEventKey_qhq48")
+flashlight = SubResource("InputEventKey_a428j")

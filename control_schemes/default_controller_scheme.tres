@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="ControllerControlScheme" load_steps=11 format=3 uid="uid://bm8l3stgeic2d"]
+
+[ext_resource type="Script" path="res://resources/input/controller_control_scheme.gd" id="1_xydin"]
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_so3dy"]
+device = -1
+axis = 1
+axis_value = 1.0
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_lmnsf"]
+device = -1
+button_index = 9
+pressed = true
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_0ua3q"]
+device = -1
+axis = 1
+axis_value = -1.0
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_lc3up"]
+device = -1
+axis_value = -1.0
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_ach2j"]
+device = -1
+axis = 3
+axis_value = 1.0
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_b4ytv"]
+device = -1
+axis = 2
+axis_value = 1.0
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_hfre1"]
+axis = 2
+axis_value = 1.0
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_l7w71"]
+device = -1
+axis = 3
+axis_value = -1.0
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_px7pd"]
+device = -1
+axis_value = 1.0
+
+[resource]
+script = ExtResource("1_xydin")
+look_left = SubResource("InputEventJoypadMotion_b4ytv")
+look_right = SubResource("InputEventJoypadMotion_hfre1")
+look_up = SubResource("InputEventJoypadMotion_l7w71")
+look_down = SubResource("InputEventJoypadMotion_ach2j")
+left = SubResource("InputEventJoypadMotion_lc3up")
+right = SubResource("InputEventJoypadMotion_px7pd")
+forwards = SubResource("InputEventJoypadMotion_0ua3q")
+backwards = SubResource("InputEventJoypadMotion_so3dy")
+flashlight = SubResource("InputEventJoypadButton_lmnsf")

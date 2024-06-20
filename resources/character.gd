@@ -4,4 +4,4 @@ extends Resource
 
 @export var name: String ## Name of the model
 @export var icon: Texture2D ## Picture to be displayed during Character Selection
-@export var model: String ## Path to the scene of the model
+@export_file(".tscn") var model: String ## Path to the scene of the model
