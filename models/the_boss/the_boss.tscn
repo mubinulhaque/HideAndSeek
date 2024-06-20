@@ -1,40 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdppave1d05ht"]
 
-[ext_resource type="PackedScene" uid="uid://he62r8l5vtxj" path="res://models/the_boss/the_boss.fbx" id="1_ebvvx"]
+[ext_resource type="PackedScene" uid="uid://ci0fkg170pvan" path="res://models/the_boss/the_boss.glb" id="1_4v4al"]
 
-[node name="Root Scene" instance=ExtResource("1_ebvvx")]
-
-[node name="Skeleton3D" parent="RootNode" index="1"]
-bones/0/position = Vector3(-1.95892e-08, 0.964075, -0.000287134)
-bones/13/rotation = Quaternion(-0.00165294, 0.000286007, 0.00298844, 0.999994)
-bones/14/rotation = Quaternion(0.21974, 0.0725066, 0.25264, 0.939484)
-bones/15/rotation = Quaternion(1.71622e-07, -6.6846e-06, 8.54269e-08, 1)
-bones/16/rotation = Quaternion(1.59735e-07, -9.96204e-05, -1.45462e-07, 1)
-bones/18/rotation = Quaternion(0.00165343, 1.07643e-07, -0.00298838, 0.999994)
-bones/20/rotation = Quaternion(-7.54865e-08, -8.31425e-06, 3.31701e-07, 1)
-bones/22/rotation = Quaternion(0.00165454, 0.000361146, -0.00298719, 0.999994)
-bones/24/rotation = Quaternion(-2.67802e-07, 1.39752e-06, -3.34575e-07, 1)
-bones/26/rotation = Quaternion(0.00165618, 0.000751867, -0.00298728, 0.999994)
-bones/30/rotation = Quaternion(0.00164952, -0.00144518, -0.00299067, 0.999993)
-bones/32/rotation = Quaternion(2.11234e-07, 0.000263957, -4.35206e-08, 1)
-bones/37/rotation = Quaternion(-0.00166713, -0.000290896, -0.00298869, 0.999994)
-bones/38/rotation = Quaternion(0.220512, -0.0696715, -0.251979, 0.939695)
-bones/39/rotation = Quaternion(3.10938e-07, 1.04843e-05, -3.51566e-07, 1)
-bones/40/rotation = Quaternion(3.21171e-07, 0.000159323, 2.43145e-07, 1)
-bones/42/rotation = Quaternion(0.00166803, -2.01437e-09, 0.00298836, 0.999994)
-bones/44/rotation = Quaternion(2.2729e-07, 7.40443e-06, 1.89118e-07, 1)
-bones/46/rotation = Quaternion(0.00166897, -0.000358026, 0.00298778, 0.999994)
-bones/47/rotation = Quaternion(-2.47404e-07, 1.49012e-08, -2.46535e-07, 1)
-bones/48/rotation = Quaternion(1.09401e-07, -1.3089e-06, 2.89506e-07, 1)
-bones/50/rotation = Quaternion(0.00167068, -0.000751741, 0.00298733, 0.999994)
-bones/51/rotation = Quaternion(-2.70258e-07, 2.99441e-08, -6.74535e-08, 1)
-bones/52/rotation = Quaternion(-2.65183e-07, -3.01073e-08, 4.43405e-07, 1)
-bones/54/rotation = Quaternion(0.00166356, 0.0014471, 0.00299076, 0.999993)
-bones/55/rotation = Quaternion(-2.69027e-07, 5.56736e-08, 2.48652e-07, 1)
-bones/56/rotation = Quaternion(1.90256e-07, -0.000263293, -2.24924e-07, 1)
-bones/58/rotation = Quaternion(3.17427e-07, -0.00408602, 0.999992, -5.44599e-05)
-bones/59/rotation = Quaternion(-0.0246335, 3.87033e-06, -0.000115351, 0.999697)
-bones/60/rotation = Quaternion(0.329295, 0.011476, -0.0117817, 0.944084)
-bones/63/rotation = Quaternion(-3.33669e-07, -0.00407941, 0.999992, 5.58009e-05)
-bones/64/rotation = Quaternion(-0.024648, -3.8718e-06, 0.000115349, 0.999696)
-bones/65/rotation = Quaternion(0.329304, -0.011475, 0.0117826, 0.944081)
+[node name="TheBoss" instance=ExtResource("1_4v4al")]
