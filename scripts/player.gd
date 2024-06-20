@@ -2,6 +2,9 @@ class_name Player
 extends Node
 ## Controls a player's actions and attributes
 
+## Speed that a character moves at
+const MOVEMENT_SPEED = 5
+
 ## Character that the player is playing as
 var character: Character
 ## What kind of input the player is using
@@ -10,6 +13,10 @@ var input_type: Game.INPUT_TYPE = Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 var controller_index := 0
 ## Model to control
 var model: Node3D
+## Controls that this player can use to control their character
+var control_scheme: ControlScheme
+## Current forwards speed of the character
+var forwards_speed := 0
 
 
 func _init(
@@ -23,18 +30,19 @@ func _init(
 	
 	if input_type == Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
 		set_name("KeyboardPlayer")
+		control_scheme = Game.default_keyboard_control_scheme
 	else:
 		set_name("ControllerPlayer" + str(new_index))
+		control_scheme = Game.default_controller_control_scheme
+		control_scheme.controller_index = controller_index
+
+
+func _process(delta: float) -> void:
+	if model:
+		model.position.z += forwards_speed * delta
 
 
 func _input(event: InputEvent) -> void:
-	if model and event.is_pressed():
+	if model:
 		# If the player has a model assigned to it
-		if input_type == Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
-			if event is InputEventKey:
-				if event.keycode == KEY_ENTER:
-					model.rotate_y(PI / 2)
-		elif event.device == controller_index:
-			if event is InputEventJoypadButton:
-				if event.button_index == JOY_BUTTON_A:
-					model.rotate_y(PI / 2)
+		forwards_speed = control_scheme._get_forwards_speed(event) * MOVEMENT_SPEED
