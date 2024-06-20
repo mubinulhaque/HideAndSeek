@@ -1,5 +1,100 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdppave1d05ht"]
+[gd_scene load_steps=13 format=3 uid="uid://cdppave1d05ht"]
 
 [ext_resource type="PackedScene" uid="uid://ci0fkg170pvan" path="res://models/the_boss/the_boss.glb" id="1_4v4al"]
+[ext_resource type="Script" path="res://scripts/model.gd" id="2_7xgyn"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lmvnn"]
+animation = &"Dying"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5kdb5"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dug3l"]
+animation = &"Forwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_esq83"]
+animation = &"Backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c2x5c"]
+animation = &"Strafe Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tdkjn"]
+animation = &"Strafe Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_b7wyq"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_5kdb5")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_dug3l")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_esq83")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_c2x5c")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_tdkjn")
+blend_point_4/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irono"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_do84t"]
+xfade_time = 1.0
+advance_mode = 2
+advance_condition = &"dying"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7q5mk"]
+states/Start/position = Vector2(149, 100)
+states/dying/node = SubResource("AnimationNodeAnimation_lmvnn")
+states/dying/position = Vector2(553, 26)
+states/moving/node = SubResource("AnimationNodeBlendSpace2D_b7wyq")
+states/moving/position = Vector2(318, 100)
+transitions = ["Start", "moving", SubResource("AnimationNodeStateMachineTransition_irono"), "moving", "dying", SubResource("AnimationNodeStateMachineTransition_do84t")]
+graph_offset = Vector2(-41, -21)
 
 [node name="TheBoss" instance=ExtResource("1_4v4al")]
+script = ExtResource("2_7xgyn")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 5.36493e-07, 6.23893e-07, 0.707107)
+bones/1/rotation = Quaternion(-0.00509408, 6.59803e-08, -8.20192e-07, 0.999987)
+bones/2/rotation = Quaternion(-0.0421255, 2.76306e-15, 3.65463e-14, 0.999112)
+bones/3/rotation = Quaternion(0.0472145, 2.64595e-15, -3.20034e-17, 0.998885)
+bones/10/rotation = Quaternion(-0.483498, -0.5101, 0.556307, -0.443339)
+bones/11/rotation = Quaternion(-0.043183, 0.00302386, 0.0697849, 0.996622)
+bones/14/rotation = Quaternion(0.218628, 0.0716921, 0.254761, 0.939233)
+bones/15/rotation = Quaternion(0.0206874, -7.07631e-06, -0.000239976, 0.999786)
+bones/16/rotation = Quaternion(0.0770999, -9.9354e-05, -0.000784692, 0.997023)
+bones/18/rotation = Quaternion(1.95511e-14, 1.86167e-07, -1.0741e-07, 1)
+bones/20/rotation = Quaternion(0.000429948, -8.15403e-06, -0.0193497, 0.999813)
+bones/22/rotation = Quaternion(-0.00794944, 0.000485123, -0.0608972, 0.998112)
+bones/26/rotation = Quaternion(-0.00888714, 0.000950456, -0.106316, 0.994292)
+bones/27/rotation = Quaternion(-1.89051e-06, -4.59447e-07, -4.88357e-07, 1)
+bones/28/rotation = Quaternion(1.35963e-05, 6.45213e-07, 6.57904e-07, 1)
+bones/30/rotation = Quaternion(0.00573112, -0.0011194, -0.191683, 0.98144)
+bones/32/rotation = Quaternion(-0.000683917, 0.000264687, 0.0239931, 0.999712)
+bones/34/rotation = Quaternion(0.483494, -0.510106, 0.556302, 0.443344)
+bones/35/rotation = Quaternion(-0.0431727, -0.00302304, -0.0697853, 0.996623)
+bones/38/rotation = Quaternion(0.219423, -0.0688636, -0.254097, 0.939439)
+bones/39/rotation = Quaternion(0.0206148, 1.0494e-05, 0.000366945, 0.999787)
+bones/40/rotation = Quaternion(0.0772248, 0.000159192, 0.00124945, 0.997013)
+bones/43/rotation = Quaternion(-1.33838e-09, 3.51536e-08, 2.67613e-08, 1)
+bones/44/rotation = Quaternion(0.000385781, 7.31097e-06, 0.0193512, 0.999813)
+bones/46/rotation = Quaternion(-0.00790966, -0.000482365, 0.0608979, 0.998113)
+bones/47/rotation = Quaternion(-8.94558e-05, -7.54955e-08, -3.785e-07, 1)
+bones/48/rotation = Quaternion(-2.62538e-06, -1.43606e-06, 8.13912e-05, 1)
+bones/50/rotation = Quaternion(-0.00890052, -0.000951498, 0.106316, 0.994292)
+bones/54/rotation = Quaternion(0.00572631, 0.00111856, 0.191679, 0.98144)
+bones/56/rotation = Quaternion(-0.000765867, -0.000262929, -0.0240013, 0.999712)
+bones/58/rotation = Quaternion(3.00262e-06, -0.0049807, 0.999987, -0.000786818)
+bones/59/rotation = Quaternion(-0.0241478, 2.6549e-06, -0.000115382, 0.999708)
+bones/60/rotation = Quaternion(0.329689, 0.0112804, -0.0124815, 0.94394)
+bones/61/rotation = Quaternion(0.460538, -0.0199048, 0.0563297, 0.885627)
+bones/63/rotation = Quaternion(-4.381e-06, -0.0049807, 0.999987, 0.000788478)
+bones/64/rotation = Quaternion(-0.0241477, -4.3083e-06, 0.000115338, 0.999708)
+bones/65/rotation = Quaternion(0.32969, -0.011279, 0.0124823, 0.943939)
+bones/66/rotation = Quaternion(0.460537, 0.0199051, -0.0563293, 0.885628)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_7q5mk")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/dying = false
+parameters/moving/blend_position = Vector2(0, 0)

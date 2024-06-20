@@ -8,6 +8,7 @@ extends Resource
 # Get the forwards speed of the player's character
 # Note: always reports the last axis value to ensure that players cannot
 # interfere with each other's movement
+# Note: returns a value between -1 and 1
 func _get_forwards_speed(_input_event: InputEvent, _device: int) -> float:
 	return 0
 
@@ -15,5 +16,6 @@ func _get_forwards_speed(_input_event: InputEvent, _device: int) -> float:
 # Get the strafe speed of the player's character
 # Note: always reports the last axis value to ensure that players cannot
 # interfere with each other's movement
+# Note: returns a value between -1 and 1
 func _get_strafe_speed(_input_event: InputEvent, _device: int) -> float:
 	return 0
