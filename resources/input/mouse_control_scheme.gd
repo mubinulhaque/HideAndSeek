@@ -12,6 +12,7 @@ extends ControlScheme
 @export var invert_y := false ## Whether to invert the mouse's Y axis
 
 var _last_forwards_speed := 0
+var _last_strafe_speed := 0
 
 
 func _get_forwards_speed(input_event: InputEvent, _device: int) -> float:
@@ -23,3 +24,14 @@ func _get_forwards_speed(input_event: InputEvent, _device: int) -> float:
 		_last_forwards_speed = forwards_speed - backwards_speed
 	
 	return _last_forwards_speed
+
+
+func _get_strafe_speed(input_event: InputEvent, _device: int) -> float:
+	if input_event is InputEventKey:
+		# If the event is from the keyboard
+		var event: InputEventKey = input_event
+		var right_speed := 1 if event.keycode == right and event.pressed else 0
+		var left_speed := 1 if event.keycode == left and event.pressed else 0
+		_last_strafe_speed = right_speed - left_speed
+	
+	return _last_strafe_speed

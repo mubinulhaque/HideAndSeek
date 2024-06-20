@@ -17,6 +17,7 @@ extends ControlScheme
 @export var vertical_look: JoyAxis
 
 var _last_forwards_axis_value: float = 0
+var _last_strafe_axis_value: float = 0
 
 
 func _get_forwards_speed(input_event: InputEvent, device: int) -> float:
@@ -32,3 +33,18 @@ func _get_forwards_speed(input_event: InputEvent, device: int) -> float:
 			_last_forwards_axis_value = 0
 	
 	return _last_forwards_axis_value
+
+
+func _get_strafe_speed(input_event: InputEvent, device: int) -> float:
+	if input_event is InputEventJoypadMotion:
+		# If the event is from a controller's joystick
+		var axis_value := Input.get_joy_axis(device, right)
+		
+		if abs(axis_value) >= deadzone:
+			# If the axis' value is higher than or equal to the deadzone
+			_last_strafe_axis_value = axis_value
+		else:
+			# If the axis' value is higher than the deadzone
+			_last_strafe_axis_value = 0
+	
+	return _last_strafe_axis_value

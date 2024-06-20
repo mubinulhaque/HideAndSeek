@@ -17,6 +17,8 @@ var model: Node3D
 var control_scheme: ControlScheme
 ## Current forwards speed of the character
 var forwards_speed: float = 0
+## Current strafe speed of the character
+var strafe_speed: float = 0
 
 
 func _init(
@@ -39,9 +41,11 @@ func _init(
 func _process(delta: float) -> void:
 	if model:
 		model.position.z += forwards_speed * delta
+		model.position.x -= strafe_speed * delta
 
 
 func _input(event: InputEvent) -> void:
 	if model:
 		# If the player has a model assigned to it
 		forwards_speed = control_scheme._get_forwards_speed(event, controller_index) * MOVEMENT_SPEED
+		strafe_speed = control_scheme._get_strafe_speed(event, controller_index) * MOVEMENT_SPEED
