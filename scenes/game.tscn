@@ -1,7 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtmf5b4c15p4f"]
+[gd_scene load_steps=12 format=3 uid="uid://dtmf5b4c15p4f"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_egw54"]
+[ext_resource type="Script" path="res://resources/splitscreen/splitscreen_portion.gd" id="2_sf7mn"]
+[ext_resource type="Script" path="res://resources/splitscreen/splitscreen_layout.gd" id="3_8kc5c"]
+[ext_resource type="Script" path="res://resources/splitscreen/splitscreen_layout_group.gd" id="4_owjl1"]
+
+[sub_resource type="Resource" id="Resource_ufgqg"]
+script = ExtResource("2_sf7mn")
+width = 1280
+height = 360
+x = 0
+y = 0
+
+[sub_resource type="Resource" id="Resource_gx1x2"]
+script = ExtResource("2_sf7mn")
+width = 1280
+height = 360
+x = 0
+y = 360
+
+[sub_resource type="Resource" id="Resource_s57bp"]
+script = ExtResource("3_8kc5c")
+portions = Array[ExtResource("2_sf7mn")]([SubResource("Resource_ufgqg"), SubResource("Resource_gx1x2")])
+
+[sub_resource type="Resource" id="Resource_w7tyx"]
+script = ExtResource("2_sf7mn")
+width = 640
+height = 720
+x = 0
+y = 0
+
+[sub_resource type="Resource" id="Resource_pmkwt"]
+script = ExtResource("2_sf7mn")
+width = 640
+height = 720
+x = 640
+y = 0
+
+[sub_resource type="Resource" id="Resource_x2a2c"]
+script = ExtResource("3_8kc5c")
+portions = Array[ExtResource("2_sf7mn")]([SubResource("Resource_w7tyx"), SubResource("Resource_pmkwt")])
+
+[sub_resource type="Resource" id="Resource_7xvka"]
+script = ExtResource("4_owjl1")
+layouts = Array[ExtResource("3_8kc5c")]([SubResource("Resource_s57bp"), SubResource("Resource_x2a2c")])
 
 [node name="Game" type="Node"]
 script = ExtResource("1_egw54")
+screen_layouts = Array[ExtResource("4_owjl1")]([SubResource("Resource_7xvka")])
 initial_scene = "main_menu"

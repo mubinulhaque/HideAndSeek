@@ -46,6 +46,7 @@ offset_right = 1224.0
 offset_bottom = 610.0
 
 [node name="SwitchSceneButton" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 449.0
 offset_top = 652.0

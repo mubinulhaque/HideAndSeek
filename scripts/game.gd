@@ -9,6 +9,7 @@ enum INPUT_TYPE {
 	KEYBOARD_AND_MOUSE,
 }
 
+@export var screen_layouts: Array[SplitscreenLayoutGroup]
 @export var initial_scene: String
 
 static var default_keyboard_control_scheme := load("res://control_schemes/default_keyboard_scheme.tres")
@@ -123,3 +124,13 @@ func add_characters(positions: Array[Vector2], world: Node) -> void:
 			players[i].model = new_char
 		else:
 			print("Cannot load model at: ", players[i].character.model)
+		
+		if players.size() > 1:
+			if screen_layouts.size() + 1 >= players.size():
+				# If a splitscreen layout has been set for this number of players
+				print("A splitscreen layout has been set for this number of players")
+	
+	if players.size() <= 1:
+		print("Not enough players!")
+	elif screen_layouts.size() + 1 < players.size():
+		print("No splitscreen layout has been set for this number of players!")

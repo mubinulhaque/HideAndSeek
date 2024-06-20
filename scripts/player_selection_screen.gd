@@ -12,6 +12,8 @@ signal player_ready(
 var active_controllers: Array[int]
 var active_keyboard := false
 
+@onready var switch_scene_button: Button = $SwitchSceneButton
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_join"):
@@ -69,6 +71,14 @@ func _on_player_ready(
 		controller_index: int,
 ) -> void:
 	player_ready.emit(character, input_type, controller_index)
+	
+	var ready_slots := 0
+	for slot in player_slots:
+		if slot.is_player_ready:
+			ready_slots += 1
+	
+	if ready_slots >= 2:
+		switch_scene_button.visible = true
 
 
 func _on_all_players_ready() -> void:

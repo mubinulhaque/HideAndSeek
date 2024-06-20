@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dgy6laftuoplc"]
+
+[node name="SplitscreenContainer" type="SubViewportContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
