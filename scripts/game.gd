@@ -9,20 +9,23 @@ enum INPUT_TYPE {
 	KEYBOARD_AND_MOUSE,
 }
 
+const scenes: Dictionary = {
+	"main_menu": "res://scenes/main_menu.tscn",
+	"player_selection": "res://scenes/player_selection_screen.tscn",
+	"example_world": "res://scenes/worlds/example_world.tscn",
+}
+const splitscreen_container : = preload("res://scenes/splitscreen_container.tscn")
+
 @export var screen_layouts: Array[SplitscreenLayoutGroup]
 @export var initial_scene: String
 
 static var default_keyboard_control_scheme := load("res://control_schemes/default_keyboard_scheme.tres")
 static var default_controller_control_scheme := load("res://control_schemes/default_controller_scheme.tres")
 
-var players: Array[Player] = []
+var _players: Array[Player] = []
+var _layout_index := 0
 
-@onready var current_scene: Node = $MainMenu
-@onready var scenes: Dictionary = {
-	"main_menu": "res://scenes/main_menu.tscn",
-	"player_selection": "res://scenes/player_selection_screen.tscn",
-	"example_world": "res://scenes/example_world.tscn",
-}
+@onready var current_scene: Node
 
 
 func _ready() -> void:
@@ -96,15 +99,15 @@ func make_player(
 	)
 	var player := Player.new(character, input_type, controller_index)
 	add_child(player)
-	players.append(player)
+	_players.append(player)
 
 
 ## Adds a character for each player
 func add_characters(positions: Array[Vector2], world: Node) -> void:
-	for i in range(0, players.size()):
+	for i in range(0, _players.size()):
 		# For each player
 		# Load their model and name it appropriately
-		var model: PackedScene = load(players[i].character.model)
+		var model: PackedScene = load(_players[i].character.model)
 		
 		if model:
 			# Place the model in the wold
@@ -114,23 +117,34 @@ func add_characters(positions: Array[Vector2], world: Node) -> void:
 			new_char.position = Vector3(positions[i].x, 0.1, positions[i].y)
 			
 			# Name the model
-			if players[i].input_type == INPUT_TYPE.KEYBOARD_AND_MOUSE:
-				new_char.name = players[i].character.name + "_Keyboard"
+			if _players[i].input_type == INPUT_TYPE.KEYBOARD_AND_MOUSE:
+				new_char.name = _players[i].character.name + "_Keyboard"
 			else:
-				new_char.name = (players[i].character.name 
-						+ "_Controller" + str(players[i].controller_index))
+				new_char.name = (_players[i].character.name 
+						+ "_Controller" + str(_players[i].controller_index))
 			
 			# Set the player's model to this model
-			players[i].model = new_char
+			_players[i].model = new_char
 		else:
-			print("Cannot load model at: ", players[i].character.model)
+			print("Cannot load model at: ", _players[i].character.model)
 		
-		if players.size() > 1:
-			if screen_layouts.size() + 1 >= players.size():
-				# If a splitscreen layout has been set for this number of players
-				print("A splitscreen layout has been set for this number of players")
+		if _players.size() > 1 and screen_layouts.size() + 1 >= _players.size():
+			# If a splitscreen layout has been set for this number of players
+			var new_container: SplitscreenContainer = splitscreen_container.instantiate()
+			var current_layout := screen_layouts[_players.size() - 2].layouts[_layout_index]
+			
+			new_container.name = "Player" + str(i) + "Viewport"
+			new_container.position = Vector2(
+				current_layout.portions[i].x,
+				current_layout.portions[i].y,
+			)
+			new_container.size = Vector2(
+				current_layout.portions[i].width,
+				current_layout.portions[i].height,
+			)
+			world.add_child(new_container)
 	
-	if players.size() <= 1:
+	if _players.size() <= 1:
 		print("Not enough players!")
-	elif screen_layouts.size() + 1 < players.size():
+	elif screen_layouts.size() + 1 < _players.size():
 		print("No splitscreen layout has been set for this number of players!")

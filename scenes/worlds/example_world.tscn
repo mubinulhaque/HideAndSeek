@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdu6qhyp87gvh"]
+
+[ext_resource type="Script" path="res://scripts/worlds/world.gd" id="1_rt3t3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0bm6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mea50"]
+albedo_color = Color(1, 0, 0.705882, 1)
+
+[node name="ExampleWorld" type="Node3D"]
+script = ExtResource("1_rt3t3")
+spawn_positions = Array[Vector2]([Vector2(0, 0), Vector2(1, 0), Vector2(2, 0), Vector2(3, 0)])
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+size = Vector3(10, 0.1, 10)
+
+[node name="ZPlusWall" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5)
+size = Vector3(10, 10, 0.1)
+material = SubResource("StandardMaterial3D_p0bm6")
+
+[node name="ZMinusWall" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
+size = Vector3(10, 10, 0.1)
+material = SubResource("StandardMaterial3D_mea50")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3, 0)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
