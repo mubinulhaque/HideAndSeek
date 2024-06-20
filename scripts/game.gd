@@ -11,8 +11,8 @@ enum INPUT_TYPE {
 
 @export var initial_scene: String
 
-static var default_keyboard_control_scheme: ControlScheme = load("res://control_schemes/default_keyboard_scheme.tres")
-static var default_controller_control_scheme: ControlScheme = load("res://control_schemes/default_controller_scheme.tres")
+static var default_keyboard_control_scheme := load("res://control_schemes/default_keyboard_scheme.tres")
+static var default_controller_control_scheme := load("res://control_schemes/default_controller_scheme.tres")
 
 var players: Array[Player] = []
 

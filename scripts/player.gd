@@ -16,7 +16,7 @@ var model: Node3D
 ## Controls that this player can use to control their character
 var control_scheme: ControlScheme
 ## Current forwards speed of the character
-var forwards_speed := 0
+var forwards_speed: float = 0
 
 
 func _init(
@@ -34,7 +34,6 @@ func _init(
 	else:
 		set_name("ControllerPlayer" + str(new_index))
 		control_scheme = Game.default_controller_control_scheme
-		control_scheme.controller_index = controller_index
 
 
 func _process(delta: float) -> void:
@@ -45,4 +44,4 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if model:
 		# If the player has a model assigned to it
-		forwards_speed = control_scheme._get_forwards_speed(event) * MOVEMENT_SPEED
+		forwards_speed = control_scheme._get_forwards_speed(event, controller_index) * MOVEMENT_SPEED

@@ -14,7 +14,7 @@ extends ControlScheme
 var _last_forwards_speed := 0
 
 
-func _get_forwards_speed(input_event: InputEvent) -> float:
+func _get_forwards_speed(input_event: InputEvent, _device: int) -> float:
 	if input_event is InputEventKey:
 		# If the event is from the keyboard
 		var event: InputEventKey = input_event

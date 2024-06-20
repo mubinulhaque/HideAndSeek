@@ -25,7 +25,7 @@ layout_mode = 2
 
 [node name="InputManagerButton" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
-text = "Test Input Manager"
+text = " Load Example World "
 
 [node name="ExitButton" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
