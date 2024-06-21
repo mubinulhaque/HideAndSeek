@@ -125,24 +125,27 @@ func add_characters(positions: Array[Vector2], world: Node) -> void:
 			
 			# Set the player's model to this model
 			_players[i].model = new_char
+		
+			if _players.size() > 1 and screen_layouts.size() + 1 >= _players.size():
+				# If a splitscreen layout has been set for this number of players
+				var new_container: SplitscreenContainer = splitscreen_container.instantiate()
+				var current_layout := screen_layouts[_players.size() - 2].layouts[_layout_index]
+				
+				new_container.name = "Player" + str(i) + "Viewport"
+				new_container.position = Vector2(
+					current_layout.portions[i].x,
+					current_layout.portions[i].y,
+				)
+				new_container.size = Vector2(
+					current_layout.portions[i].width,
+					current_layout.portions[i].height,
+				)
+				new_container.target = new_char
+				new_container.visible = true
+				
+				world.add_child(new_container)
 		else:
 			print("Cannot load model at: ", _players[i].character.model)
-		
-		if _players.size() > 1 and screen_layouts.size() + 1 >= _players.size():
-			# If a splitscreen layout has been set for this number of players
-			var new_container: SplitscreenContainer = splitscreen_container.instantiate()
-			var current_layout := screen_layouts[_players.size() - 2].layouts[_layout_index]
-			
-			new_container.name = "Player" + str(i) + "Viewport"
-			new_container.position = Vector2(
-				current_layout.portions[i].x,
-				current_layout.portions[i].y,
-			)
-			new_container.size = Vector2(
-				current_layout.portions[i].width,
-				current_layout.portions[i].height,
-			)
-			world.add_child(new_container)
 	
 	if _players.size() <= 1:
 		print("Not enough players!")

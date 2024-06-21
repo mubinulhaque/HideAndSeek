@@ -4,6 +4,7 @@ extends Node3D
 const LERP_WEIGHT := 0.25
 
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var offset: Marker3D = $Offset
 
 
 # Blend between the animation for moving forwards
