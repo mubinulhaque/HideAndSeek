@@ -86,3 +86,11 @@ menu_cancel={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_render/layer_1="world"
+3d_render/layer_2="player1_model"
+3d_render/layer_3="player1_ui"
+3d_render/layer_4="player2_model"
+3d_render/layer_5="player2_ui"

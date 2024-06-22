@@ -128,6 +128,9 @@ func add_characters(positions: Array[Vector2], world: Node) -> void:
 		
 			if _players.size() > 1 and screen_layouts.size() + 1 >= _players.size():
 				# If a splitscreen layout has been set for this number of players
+				# Make a SplitscreenContainer
+				# Resize it according to the layout
+				# And set it to follow the player's model
 				var new_container: SplitscreenContainer = splitscreen_container.instantiate()
 				var current_layout := screen_layouts[_players.size() - 2].layouts[_layout_index]
 				
@@ -142,6 +145,7 @@ func add_characters(positions: Array[Vector2], world: Node) -> void:
 				)
 				new_container.target = new_char
 				new_container.visible = true
+				new_container.set_render_layers.call_deferred(i, _players.size())
 				
 				world.add_child(new_container)
 		else:

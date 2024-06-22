@@ -5,6 +5,7 @@ const LERP_WEIGHT := 0.25
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var offset: Marker3D = $Offset
+@onready var skeleton: Skeleton3D = $Armature/Skeleton3D
 
 
 # Blend between the animation for moving forwards
@@ -27,8 +28,18 @@ func set_strafe_strength(strength: float) -> void:
 	)
 
 
+# Plays the dying animation
 func die() -> void:
 	if animation_tree:
 		animation_tree["parameters/conditions/dying"] = true
 	else:
 		print("No animation tree attached to ", name, "!")
+
+
+# Sets the layers the model can be visible on
+func set_visibility_layer(layer: int) -> void:
+	for child in skeleton.get_children(true):
+		if child is VisualInstance3D:
+			var instance: VisualInstance3D = child
+			instance.set_layer_mask_value(1, false)
+			instance.set_layer_mask_value(layer, true)
