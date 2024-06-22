@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://edukg6er11o2"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_05pje"]
+[ext_resource type="Texture2D" uid="uid://c88sdh60q0ykw" path="res://textures/characters/sophie/icon.png" id="1_vcsyy"]
+
+[resource]
+script = ExtResource("1_05pje")
+name = "Sophie"
+icon = ExtResource("1_vcsyy")
+model = "res://models/sophie/sophie.tscn"

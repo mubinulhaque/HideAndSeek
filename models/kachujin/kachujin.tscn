@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://b182gljn6g33w"]
+
+[ext_resource type="PackedScene" uid="uid://c5qytmcjwa7df" path="res://models/kachujin/kachujin.glb" id="1_bp22p"]
+[ext_resource type="Script" path="res://scripts/model.gd" id="2_5nqev"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lmvnn"]
+animation = &"Dying"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vr32k"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1fnud"]
+animation = &"Forwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sg4xe"]
+animation = &"Backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_figir"]
+animation = &"Strafe Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hhdtd"]
+animation = &"Strafe Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_b7wyq"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_vr32k")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_1fnud")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_sg4xe")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_figir")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_hhdtd")
+blend_point_4/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irono"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_do84t"]
+xfade_time = 1.0
+advance_mode = 2
+advance_condition = &"dying"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wk5hb"]
+states/Start/position = Vector2(149, 100)
+states/dying/node = SubResource("AnimationNodeAnimation_lmvnn")
+states/dying/position = Vector2(553, 26)
+states/moving/node = SubResource("AnimationNodeBlendSpace2D_b7wyq")
+states/moving/position = Vector2(318, 100)
+transitions = ["Start", "moving", SubResource("AnimationNodeStateMachineTransition_irono"), "moving", "dying", SubResource("AnimationNodeStateMachineTransition_do84t")]
+graph_offset = Vector2(-41, -21)
+
+[node name="kachujin" instance=ExtResource("1_bp22p")]
+script = ExtResource("2_5nqev")
+offset = 1.87
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 5.36488e-07, 6.23888e-07, 0.707107)
+bones/1/rotation = Quaternion(-0.00282771, 2.91346e-06, 2.17742e-05, 0.999996)
+bones/2/rotation = Quaternion(-0.0282895, -2.14491e-06, -2.26722e-05, 0.9996)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.559795, -0.431473, 0.561796, -0.429936)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.130089, 0.000232205, 0.00176939, 0.991501)
+bones/10/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.21862, 0.0716879, 0.254772, 0.939232)
+bones/16/rotation = Quaternion(1.49012e-08, -1.78348e-07, 6.75209e-08, 1)
+bones/23/rotation = Quaternion(-1.51041e-05, 2.70128e-07, -2.06525e-05, 1)
+bones/29/rotation = Quaternion(3.59314e-06, 4.42234e-09, -5.79376e-06, 1)
+bones/30/rotation = Quaternion(7.05139e-06, 4.93387e-07, 2.44128e-05, 1)
+bones/31/rotation = Quaternion(-1.63298e-05, -5.42016e-07, -3.23122e-05, 1)
+bones/33/rotation = Quaternion(0.559804, -0.431462, 0.561805, 0.429925)
+bones/33/scale = Vector3(1, 1, 1)
+bones/34/rotation = Quaternion(-0.13011, -0.000232116, -0.00176943, 0.991498)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(-5.17681e-07, 3.40729e-08, -0.00872651, 0.999962)
+bones/37/rotation = Quaternion(0.219534, -0.0688895, -0.254106, 0.939409)
+bones/39/rotation = Quaternion(7.9982e-06, -5.4948e-07, 1.02366e-05, 1)
+bones/42/rotation = Quaternion(-1.31224e-09, 9.40821e-08, 3.24054e-06, 1)
+bones/43/rotation = Quaternion(-4.67174e-06, -4.70547e-08, -2.22214e-05, 1)
+bones/44/rotation = Quaternion(9.34351e-06, -1.1427e-07, -1.13621e-07, 1)
+bones/45/rotation = Quaternion(-6.455e-07, 7.62978e-08, -1.95159e-06, 1)
+bones/46/rotation = Quaternion(-3.19461e-06, 6.81113e-08, -6.06803e-06, 1)
+bones/49/rotation = Quaternion(-6.44844e-07, 3.16658e-08, 4.18196e-05, 1)
+bones/51/rotation = Quaternion(4.06661e-06, -1.72834e-07, 5.62724e-05, 1)
+bones/53/rotation = Quaternion(-6.38549e-07, 1.94625e-07, 4.57279e-07, 1)
+bones/57/rotation = Quaternion(0.950567, 0.284321, -0.0342701, -0.12004)
+bones/57/scale = Vector3(1, 1, 1)
+bones/58/rotation = Quaternion(-0.132757, 0.00774818, 0.0688245, 0.988726)
+bones/58/scale = Vector3(1, 1, 1)
+bones/59/rotation = Quaternion(-0.0597202, -0.0071689, 0.0879328, 0.994309)
+bones/59/scale = Vector3(1, 1, 1)
+bones/60/rotation = Quaternion(-0.0474758, -0.00980256, 0.0512733, 0.997507)
+bones/60/scale = Vector3(1, 1, 1)
+bones/61/rotation = Quaternion(0.952147, -0.284576, 0.0304333, -0.107266)
+bones/62/rotation = Quaternion(-0.103797, -0.00791551, -0.068845, 0.992181)
+bones/63/rotation = Quaternion(-0.0611795, 0.00451151, -0.0880344, 0.994227)
+bones/65/rotation = Quaternion(3.27542e-08, 0.00943874, 0.999955, 8.08596e-07)
+bones/65/scale = Vector3(1, 1, 1)
+bones/66/rotation = Quaternion(-0.0467697, 2.15196e-07, 3.22988e-08, 0.998906)
+bones/67/rotation = Quaternion(0.487252, -1.42807e-07, 6.52015e-07, 0.873261)
+bones/70/rotation = Quaternion(2.91055e-07, 0.00943878, 0.999955, 4.63166e-07)
+bones/70/scale = Vector3(1, 1, 1)
+bones/71/rotation = Quaternion(-0.0467699, -1.03603e-07, -6.72783e-07, 0.998906)
+bones/71/scale = Vector3(1, 1, 1)
+bones/72/rotation = Quaternion(0.487251, 1.00579e-06, 5.74246e-07, 0.873262)
+bones/73/rotation = Quaternion(0.306754, 5.41291e-08, 3.54789e-07, 0.951789)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_wk5hb")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/dying = false
+parameters/moving/blend_position = Vector2(0, 0)

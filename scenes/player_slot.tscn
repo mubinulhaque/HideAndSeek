@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsinwywj8abnh"]
+[gd_scene load_steps=18 format=3 uid="uid://dsinwywj8abnh"]
 
 [ext_resource type="Script" path="res://scripts/player_slot.gd" id="1_6qmrs"]
 [ext_resource type="Texture2D" uid="uid://bedb2315x7e7o" path="res://textures/menu/arrowRight.png" id="1_saueq"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://scripts/state_machines/player_selection/character_selection.gd" id="12_t2cco"]
 [ext_resource type="Resource" uid="uid://uomgng6bc864" path="res://characters/erika.tres" id="13_1gxre"]
 [ext_resource type="Resource" uid="uid://cuf725ginvxtp" path="res://characters/the_boss.tres" id="14_dtusx"]
+[ext_resource type="Resource" uid="uid://bpeddubsa51sv" path="res://characters/kachujin.tres" id="14_edvlc"]
+[ext_resource type="Resource" uid="uid://edukg6er11o2" path="res://characters/sophie.tres" id="15_dhjto"]
 
 [node name="PlayerSlot" type="ColorRect"]
 offset_right = 250.0
@@ -84,7 +86,7 @@ switch_icons = ExtResource("4_8qb1p")
 
 [node name="CharacterSelection" type="Node" parent="StateMachine"]
 script = ExtResource("12_t2cco")
-characters = Array[Resource("res://resources/character.gd")]([ExtResource("13_1gxre"), ExtResource("14_dtusx")])
+characters = Array[Resource("res://resources/character.gd")]([ExtResource("13_1gxre"), ExtResource("14_dtusx"), ExtResource("14_edvlc"), ExtResource("15_dhjto")])
 
 [node name="CancelButton" type="Button" parent="."]
 layout_mode = 0

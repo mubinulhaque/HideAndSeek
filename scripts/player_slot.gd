@@ -10,7 +10,7 @@ signal player_ready(
 
 var input_type: Game.INPUT_TYPE = Game.INPUT_TYPE.KEYBOARD_AND_MOUSE
 var controller_index := 0
-var is_player_ready = 0
+var is_player_ready := 0
 
 @onready var main_icon: TextureRect = $MainIcon
 @onready var input_selection: InputSelection = $StateMachine/InputSelection

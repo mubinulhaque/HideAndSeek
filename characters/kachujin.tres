@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bpeddubsa51sv"]
+
+[ext_resource type="Script" path="res://resources/character.gd" id="1_0gk3f"]
+[ext_resource type="Texture2D" uid="uid://cuevpk7pas77v" path="res://textures/characters/kachujin/icon.png" id="1_706bi"]
+
+[resource]
+script = ExtResource("1_0gk3f")
+name = "Kachujin"
+icon = ExtResource("1_706bi")
+model = "res://models/kachujin/kachujin.tscn"
