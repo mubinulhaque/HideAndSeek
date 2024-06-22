@@ -13,12 +13,13 @@ var target: Node3D:
 func _process(_delta: float) -> void:
 	if target:
 		# If there is a target to follow
+		camera.global_position = target.global_position
+		camera.global_rotation = target.global_rotation
+		
 		if target is Model:
-			camera.global_position = target.offset.global_position
-			camera.global_rotation = target.offset.global_rotation
-		else:
-			camera.global_position = target.global_position
-			camera.global_rotation = target.global_rotation
+			# If the target is a model
+			camera.global_position.y = target.global_position.y + target.offset
+			camera.global_rotation.y = target.global_rotation.y - PI
 
 
 # Sets the render layers of the camera

@@ -1,10 +1,11 @@
 class_name Model
 extends Node3D
 
+@export var offset := 1.0
+
 const LERP_WEIGHT := 0.25
 
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var offset: Marker3D = $Offset
 @onready var skeleton: Skeleton3D = $Armature/Skeleton3D
 
 
