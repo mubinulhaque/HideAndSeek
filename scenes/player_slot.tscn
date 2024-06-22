@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsinwywj8abnh"]
+[gd_scene load_steps=16 format=3 uid="uid://dsinwywj8abnh"]
 
 [ext_resource type="Script" path="res://scripts/player_slot.gd" id="1_6qmrs"]
 [ext_resource type="Texture2D" uid="uid://bedb2315x7e7o" path="res://textures/menu/arrowRight.png" id="1_saueq"]
 [ext_resource type="Resource" uid="uid://yhco58n54xc5" path="res://icon_profiles/xbox_icon_profile.tres" id="2_wk1jq"]
 [ext_resource type="Resource" uid="uid://b8hc0lufg7tjy" path="res://icon_profiles/playstation_icon_profile.tres" id="3_6dmnf"]
-[ext_resource type="Texture2D" uid="uid://dgyves8buvnme" path="res://textures/input/generic/dpad_left.svg" id="3_mcs3v"]
 [ext_resource type="Resource" uid="uid://jxffi2tn85fu" path="res://icon_profiles/switch_icon_profile.tres" id="4_8qb1p"]
 [ext_resource type="Script" path="res://scripts/state_machines/player_selection/player_slot_state_machine.gd" id="4_m346i"]
 [ext_resource type="Texture2D" uid="uid://cr7mj74sv5ofn" path="res://textures/input/generic/dpad_right.svg" id="5_haptm"]
@@ -40,7 +39,7 @@ offset_left = 8.0
 offset_top = 60.0
 offset_right = 40.0
 offset_bottom = 92.0
-texture = ExtResource("3_mcs3v")
+texture = ExtResource("5_haptm")
 expand_mode = 2
 
 [node name="MainIcon" type="TextureRect" parent="."]
