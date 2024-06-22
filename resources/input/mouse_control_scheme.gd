@@ -15,23 +15,17 @@ var _last_forwards_speed := 0
 var _last_strafe_speed := 0
 
 
-func _get_forwards_speed(input_event: InputEvent, _device: int) -> float:
-	if input_event is InputEventKey:
-		# If the event is from the keyboard
-		var event: InputEventKey = input_event
-		var forwards_speed := 1 if event.keycode == forwards and event.pressed else 0
-		var backwards_speed := 1 if event.keycode == backwards and event.pressed else 0
-		_last_forwards_speed = forwards_speed - backwards_speed
+func _get_forwards_speed(_device: int) -> float:
+	var forwards_speed := 1 if Input.is_key_pressed(forwards) else 0
+	var backwards_speed := 1 if Input.is_key_pressed(backwards) else 0
+	_last_forwards_speed = forwards_speed - backwards_speed
 	
 	return _last_forwards_speed
 
 
-func _get_strafe_speed(input_event: InputEvent, _device: int) -> float:
-	if input_event is InputEventKey:
-		# If the event is from the keyboard
-		var event: InputEventKey = input_event
-		var right_speed := 1 if event.keycode == right and event.pressed else 0
-		var left_speed := 1 if event.keycode == left and event.pressed else 0
-		_last_strafe_speed = right_speed - left_speed
+func _get_strafe_speed(_device: int) -> float:
+	var right_speed := 1 if Input.is_key_pressed(right)else 0
+	var left_speed := 1 if Input.is_key_pressed(left) else 0
+	_last_strafe_speed = right_speed - left_speed
 	
 	return _last_strafe_speed

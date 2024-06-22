@@ -9,10 +9,9 @@ pressed = true
 
 [resource]
 script = ExtResource("1_xydin")
-controller_index = 0
 deadzone = 0.5
 forwards = 1
-right = 0
+strafe = 0
 horizontal_look = 2
 vertical_look = 3
 flashlight = SubResource("InputEventJoypadButton_lmnsf")
