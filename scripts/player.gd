@@ -15,6 +15,8 @@ var controller_index := 0
 var model: Node3D
 ## Controls that this player can use to control their character
 var control_scheme: ControlScheme
+## How much the character wants to rotate in the last frame
+var look_delta: Vector2 = Vector2.ZERO
 
 
 func _init(
@@ -39,10 +41,24 @@ func _process(delta: float) -> void:
 	var strafe_strength := control_scheme._get_strafe_speed(controller_index)
 	
 	if model:
-		model.position.z += forwards_strength * MOVEMENT_SPEED * delta
-		model.position.x -= strafe_strength * MOVEMENT_SPEED * delta
+		# Get the direction the model should rotate in
+		var direction := (model.transform.basis * Vector3(
+				-strafe_strength,
+				0,
+				forwards_strength,
+		)).normalized()
+		
+		if direction:
+			model.position.x += direction.x * MOVEMENT_SPEED * delta
+			model.position.z += direction.z * MOVEMENT_SPEED * delta
+		
+		model.rotate_y(-look_delta.x * control_scheme.sensitivity * delta)
 		
 		if model is Model:
 			var player_model: Model = model
 			player_model.set_forwards_strength(forwards_strength)
 			player_model.set_strafe_strength(strafe_strength)
+
+
+func _input(event: InputEvent) -> void:
+	look_delta = control_scheme._get_look_delta(event, controller_index)

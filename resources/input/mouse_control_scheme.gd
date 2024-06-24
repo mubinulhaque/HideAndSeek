@@ -29,3 +29,11 @@ func _get_strafe_speed(_device: int) -> float:
 	_last_strafe_speed = right_speed - left_speed
 	
 	return _last_strafe_speed
+
+
+func _get_look_delta(event: InputEvent, _device: int) -> Vector2:
+	if event is InputEventMouseMotion:
+		var mouse_event: InputEventMouseMotion = event
+		return mouse_event.relative
+	else:
+		return Vector2.ZERO

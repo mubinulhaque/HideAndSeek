@@ -10,16 +10,24 @@ var target: Node3D:
 @onready var camera: Camera3D = $SubViewport/Camera3D
 
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
 func _process(_delta: float) -> void:
+	# To ensure that the game can quit once it has started
+	if Input.is_action_just_pressed("game_leave"):
+		get_tree().quit()
+	
 	if target:
 		# If there is a target to follow
-		camera.global_position = target.global_position
-		camera.global_rotation = target.global_rotation
-		
 		if target is Model:
 			# If the target is a model
-			camera.global_position.y = target.global_position.y + target.offset
+			camera.global_position = target.head.global_position
 			camera.global_rotation.y = target.global_rotation.y - PI
+		else:
+			camera.global_position = target.global_position
+			camera.global_rotation = target.global_rotation
 
 
 # Sets the render layers of the camera

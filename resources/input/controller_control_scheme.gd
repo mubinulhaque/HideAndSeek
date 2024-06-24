@@ -46,3 +46,13 @@ func _get_strafe_speed(device: int) -> float:
 		_last_strafe_axis_value = 0
 	
 	return _last_strafe_axis_value
+
+
+func _get_look_delta(_event: InputEvent, device: int) -> Vector2:
+	var horizontal_delta := Input.get_joy_axis(device, horizontal_look)
+	var vertical_delta := Input.get_joy_axis(device, vertical_look)
+	
+	horizontal_delta = horizontal_delta if abs(horizontal_delta) >= deadzone else 0
+	vertical_delta = vertical_delta if abs(vertical_delta) >= deadzone else 0
+	
+	return Vector2(horizontal_delta, vertical_delta)

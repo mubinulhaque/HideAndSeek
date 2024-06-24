@@ -14,4 +14,5 @@ forwards = 1
 strafe = 0
 horizontal_look = 2
 vertical_look = 3
+sensitivity = 5
 flashlight = SubResource("InputEventJoypadButton_lmnsf")

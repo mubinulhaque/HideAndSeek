@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MouseControlScheme" load_steps=3 format=3 uid="uid://bbxg8ki3lcbbx"]
+[gd_resource type="Resource" script_class="MouseControlScheme" load_steps=3 format=3 uid="uid://dxkqx3ipyur0a"]
 
 [ext_resource type="Script" path="res://resources/input/mouse_control_scheme.gd" id="1_cikkd"]
 
@@ -16,4 +16,5 @@ forwards = 87
 backwards = 83
 invert_x = false
 invert_y = false
+sensitivity = 1
 flashlight = SubResource("InputEventKey_a428j")
