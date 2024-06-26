@@ -24,8 +24,9 @@ func _process(_delta: float) -> void:
 		if target is Model:
 			# If the target is a model
 			camera.global_position = target.head.global_position
-			camera.global_rotation.y = target.global_rotation.y - PI
+			camera.global_rotation = target.head.global_rotation
 		else:
+			# If the target is not a model
 			camera.global_position = target.global_position
 			camera.global_rotation = target.global_rotation
 

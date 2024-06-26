@@ -58,16 +58,23 @@ func _process(delta: float) -> void:
 			model.rotate_y(-look_delta.x * control_scheme.sensitivity * delta)
 		
 		if model is Model:
+			# If the player is controlling a model
 			var player_model: Model = model
 			player_model.set_forwards_strength(forwards_strength)
 			player_model.set_strafe_strength(strafe_strength)
+			
+			if input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
+				# If the player is using a controller
+				# Note: needed to ensure smooth player rotation
+				model.head.rotate_x(look_delta.y * control_scheme.sensitivity * delta)
 
 
 func _input(event: InputEvent) -> void:
 	# Get how much the player wants to rotate
-	look_delta = control_scheme._get_look_delta(event, controller_index)
+	look_delta = control_scheme.get_look_delta(event, controller_index)
 	
 	if model and input_type == Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
 		# If the player is using the mouse and keyboard
 		# Note: needed to ensure that the player stops endlessly rotating
 		model.rotate_y(deg_to_rad(-look_delta.x * control_scheme.sensitivity))
+		model.head.rotate_x(deg_to_rad(look_delta.y * control_scheme.sensitivity))

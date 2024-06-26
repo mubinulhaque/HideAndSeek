@@ -7,10 +7,6 @@ extends ControlScheme
 @export var forwards: Key ## Key that moves a character forwards
 @export var backwards: Key ## Key that moves a character backwards
 
-@export_group("Looking")
-@export var invert_x := false ## Whether to invert the mouse's X axis
-@export var invert_y := false ## Whether to invert the mouse's Y axis
-
 var _last_forwards_speed := 0
 var _last_strafe_speed := 0
 
