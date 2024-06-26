@@ -52,7 +52,10 @@ func _process(delta: float) -> void:
 			model.position.x += direction.x * MOVEMENT_SPEED * delta
 			model.position.z += direction.z * MOVEMENT_SPEED * delta
 		
-		model.rotate_y(-look_delta.x * control_scheme.sensitivity * delta)
+		if input_type != Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
+			# If the player is using a controller
+			# Note: needed to ensure smooth player rotation
+			model.rotate_y(-look_delta.x * control_scheme.sensitivity * delta)
 		
 		if model is Model:
 			var player_model: Model = model
@@ -61,4 +64,10 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	# Get how much the player wants to rotate
 	look_delta = control_scheme._get_look_delta(event, controller_index)
+	
+	if model and input_type == Game.INPUT_TYPE.KEYBOARD_AND_MOUSE:
+		# If the player is using the mouse and keyboard
+		# Note: needed to ensure that the player stops endlessly rotating
+		model.rotate_y(deg_to_rad(-look_delta.x * control_scheme.sensitivity))
